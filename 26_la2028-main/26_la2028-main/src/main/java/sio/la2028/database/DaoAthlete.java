@@ -40,7 +40,6 @@ public class DaoAthlete {
                    a.setPrenom(resultatRequete.getString("a_prenom"));
                    a.setDateNaiss(resultatRequete.getDate("a_dateNaiss"));
 
-                    
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
                    p.setNom(resultatRequete.getString("p_nom"));

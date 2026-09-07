@@ -30,7 +30,16 @@
                 <td>Id: </td><td><%  out.println(a.getId());%></td>
             </tr>
             <tr>
-                <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
+                <td>Nom : </td><td><%  out.println(a.getNom());%></td>
             </tr>
+            <tr>
+                <td>Prenom : </td><td><%  out.println(a.getPrenom());%></td>
+            </tr>
+                <tr>
+                    <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
+                </tr>
+                <tr>
+                    <td>Date naissance : </td><td><%  out.println(a.getDateNaiss());%></td>
+                </tr>
         </table>
 </html>

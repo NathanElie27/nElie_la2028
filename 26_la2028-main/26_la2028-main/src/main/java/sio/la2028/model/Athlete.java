@@ -16,16 +16,18 @@ public class Athlete {
     private String nom ;
     private String prenom;
     private Date dateNaiss;
+    private int age;
     private Pays pays ;
 
     public Athlete() {
     }
 
-    public Athlete(int id, String nom, String prenom, Date dateNaiss) {
+    public Athlete(int id, String nom, String prenom, Date dateNaiss, int age) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
+        this.age = age;
     }
 
     public int getId() {
@@ -59,6 +61,9 @@ public class Athlete {
     public void setPays(Pays pays) {
         this.pays = pays;
     }
-    
-    
+/*
+    public int getAge() {
+        return getDateNaiss() - age;
+    }
+ */
 }

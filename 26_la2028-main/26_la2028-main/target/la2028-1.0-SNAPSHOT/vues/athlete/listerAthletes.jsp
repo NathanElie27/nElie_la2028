@@ -60,6 +60,7 @@
                 <tbody>
                     <tr>
                         <%
+                            DateTimeFormatter formatFr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
                             for (Athlete a : lesAthletes)
                             {              
@@ -74,7 +75,7 @@
                                 out.println("<td>"+a.getPrenom());
                                 out.println("</td>");
 
-                                DateTimeFormatter formatFr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
                                 out.println("<td>");
                                 out.println((a.getDateNaiss()).format(formatFr));
                                 out.println("</td>");

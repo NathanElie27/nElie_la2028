@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sio.la2028.model.Athlete"%>
 <%@page import="sio.la2028.model.Pays"%>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +25,7 @@
         %>
         <h1><%  out.println(a.getNom());%></h1>
             
-                         
+        <% SimpleDateFormat formatFr = new SimpleDateFormat("dd/MM/yyyy");  %>
             <table>
             <tr>
                 <td>Id: </td><td><%  out.println(a.getId());%></td>
@@ -39,7 +40,10 @@
                     <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
                 </tr>
                 <tr>
-                    <td>Date naissance : </td><td><%  out.println(a.getDateNaiss());%></td>
+                    <td>Date naissance : </td><td><%  out.println(formatFr.format(a.getDateNaiss()));%></td>
+                </tr>
+                <tr>
+                    <td>Age : </td><td><% out.println(a.getAge());%></td>
                 </tr>
         </table>
 </html>

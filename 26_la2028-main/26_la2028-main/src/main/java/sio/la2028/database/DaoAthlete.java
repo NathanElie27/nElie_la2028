@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Pays;
@@ -38,7 +40,8 @@ public class DaoAthlete {
                    a.setId(resultatRequete.getInt("a_id"));
                    a.setNom(resultatRequete.getString("a_nom"));
                    a.setPrenom(resultatRequete.getString("a_prenom"));
-                   a.setDateNaiss(resultatRequete.getDate("a_dateNaiss"));
+                   a.setDateNaiss(resultatRequete.getObject("a_dateNaiss", LocalDate.class));
+                   a.setAge(a.getAge());
 
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));

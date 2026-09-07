@@ -5,6 +5,9 @@
 package sio.la2028.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 
 /**
  *
@@ -15,14 +18,14 @@ public class Athlete {
     private int id;
     private String nom ;
     private String prenom;
-    private Date dateNaiss;
+    private LocalDate dateNaiss;
     private int age;
     private Pays pays ;
 
     public Athlete() {
     }
 
-    public Athlete(int id, String nom, String prenom, Date dateNaiss, int age) {
+    public Athlete(int id, String nom, String prenom, LocalDate dateNaiss, int age) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -50,9 +53,9 @@ public class Athlete {
 
     public void setPrenom(String prenom) { this.prenom = prenom;}
 
-    public Date getDateNaiss() { return dateNaiss;}
+    public LocalDate getDateNaiss() { return dateNaiss;}
 
-    public void setDateNaiss(Date dateNaiss) { this.dateNaiss = dateNaiss; }
+    public void setDateNaiss(LocalDate dateNaiss) { this.dateNaiss = dateNaiss; }
 
     public Pays getPays() {
         return pays;
@@ -61,9 +64,12 @@ public class Athlete {
     public void setPays(Pays pays) {
         this.pays = pays;
     }
-/*
+
     public int getAge() {
-        return getDateNaiss() - age;
+        return Period.between(getDateNaiss(), LocalDate.now()).getYears();
     }
- */
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

@@ -8,6 +8,8 @@
 <%@page import="sio.la2028.model.Athlete"%>
 <%@page import="sio.la2028.model.Pays"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,7 +40,6 @@
 			</div>
 		</div>
 	</nav>
-    <body>
        <div class="container special">
             <h2 class="h2">Liste des athlètes</h2>
 		<div class="table-responsive">
@@ -52,12 +53,14 @@
                         <th>nom</th>
                         <th>prenom</th>
                         <th>date naissance</th>
+                        <th>age</th>
                         <th>pays</th>                
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <%
+
                             for (Athlete a : lesAthletes)
                             {              
                                 out.println("<tr><td>");
@@ -71,8 +74,13 @@
                                 out.println("<td>"+a.getPrenom());
                                 out.println("</td>");
 
+                                DateTimeFormatter formatFr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                                 out.println("<td>");
-                                out.println(a.getDateNaiss());
+                                out.println((a.getDateNaiss()).format(formatFr));
+                                out.println("</td>");
+
+                                out.println("<td>");
+                                out.println(a.getAge());
                                 out.println("</td>");
 
                                 out.println("<td>");
@@ -85,7 +93,6 @@
                 </tbody>
             </table>
         </body>
-         </div>
-       </div>
+
   
 </html>

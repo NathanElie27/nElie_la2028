@@ -72,13 +72,11 @@ public class Athlete {
         this.pays = pays;
     }
 
+    public Sport getSport() { return sport; }
+
+    public void setSport(Sport sport) { this.sport = sport; }
+
     public int getAge() {
         return Period.between(getDateNaiss(), LocalDate.now()).getYears();
-    }
-
-    public Sport getSport() { return  sport; }
-
-    public void setSport( Sport sport ) {
-        this.sport = sport;
     }
 }

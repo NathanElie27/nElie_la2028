@@ -21,15 +21,6 @@
 	crossorigin="anonymous">
 
         <title>LOS ANGELES 2028</title>
-
-        <style>
-            body {
-		padding-top: 50px;
-            }
-                .special {
-		padding-top:50px;
-	}
-        </style>
     </head>
     <body>
       
@@ -97,4 +88,5 @@
                 </tbody>
             </table>
         </body>
+
 </html>

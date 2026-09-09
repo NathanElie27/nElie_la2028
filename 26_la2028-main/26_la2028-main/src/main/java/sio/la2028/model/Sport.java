@@ -8,35 +8,29 @@ public class Sport {
     private String nom;
     private ArrayList<Athlete> lesAthletes;
 
-    public Sport () {
+    public Sport () {}
 
-    }
+    public  Sport(int id) {this.id = id;}
 
     public int getId() { return id; }
-
-    public void setId( int id ) {
-        this.id = id;
-    }
+    public void setId( int id ) { this.id = id; }
 
     public String getNom() { return nom; }
-
-    public void setNom(String sNom) {
-        this.nom = nom;
-    }
+    public void setNom(String nom) { this.nom = nom; }
 
     public ArrayList<Athlete> getLesAthletes() {
         return lesAthletes;
     }
 
-    public void setLesAthletes(ArrayList<Athlete> lesAthletes) {
+    public void setLesAthletes (ArrayList<Athlete> lesAthletes) {
         this.lesAthletes = lesAthletes;
     }
 
-    public void addAthlete(Athlete a){
+    public void addAthlete(Athlete s){
 
         if (lesAthletes == null){
             lesAthletes = new ArrayList<Athlete>();
         }
-        lesAthletes.add(a);
+        lesAthletes.add(s);
     }
 }

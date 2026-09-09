@@ -54,7 +54,8 @@
                         <th>prenom</th>
                         <th>date naissance</th>
                         <th>age</th>
-                        <th>pays</th>                
+                        <th>pays</th>
+                        <th>sport</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,13 +87,14 @@
                                 out.println("<td>");
                                 out.println(a.getPays().getNom());
                                 out.println("</td>");
-                               
+
+                                out.println("<td>");
+                                out.println(a.getSport().getNom());
+                                out.println("</td>");
                             }
                         %>
                     </tr>
                 </tbody>
             </table>
         </body>
-
-  
 </html>

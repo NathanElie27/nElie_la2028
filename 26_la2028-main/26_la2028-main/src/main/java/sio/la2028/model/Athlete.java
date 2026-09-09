@@ -14,23 +14,22 @@ import java.util.Calendar;
  * @author zakina
  */
 public class Athlete {
-    
+
     private int id;
-    private String nom ;
+    private String nom;
     private String prenom;
     private LocalDate dateNaiss;
-    private int age;
-    private Pays pays ;
+    private Pays pays;
+    private Sport sport;
 
     public Athlete() {
     }
 
-    public Athlete(int id, String nom, String prenom, LocalDate dateNaiss, int age) {
+    public Athlete(int id, String nom, String prenom, LocalDate dateNaiss) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
-        this.age = age;
     }
 
     public int getId() {
@@ -49,13 +48,21 @@ public class Athlete {
         this.nom = nom;
     }
 
-    public String getPrenom() { return prenom;}
+    public String getPrenom() {
+        return prenom;
+    }
 
-    public void setPrenom(String prenom) { this.prenom = prenom;}
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
-    public LocalDate getDateNaiss() { return dateNaiss;}
+    public LocalDate getDateNaiss() {
+        return dateNaiss;
+    }
 
-    public void setDateNaiss(LocalDate dateNaiss) { this.dateNaiss = dateNaiss; }
+    public void setDateNaiss(LocalDate dateNaiss) {
+        this.dateNaiss = dateNaiss;
+    }
 
     public Pays getPays() {
         return pays;
@@ -69,7 +76,9 @@ public class Athlete {
         return Period.between(getDateNaiss(), LocalDate.now()).getYears();
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public Sport getSport() { return  sport; }
+
+    public void setSport( Sport sport ) {
+        this.sport = sport;
     }
 }

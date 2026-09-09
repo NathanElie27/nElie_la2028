@@ -8,6 +8,7 @@
 <%@page import="sio.la2028.model.Athlete"%>
 <%@page import="sio.la2028.model.Pays"%>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +25,7 @@
                 Athlete a = (Athlete)request.getAttribute("pAthlete");
         %>
         <h1><%  out.println(a.getNom());%></h1>
-            
+
         <% SimpleDateFormat formatFr = new SimpleDateFormat("dd/MM/yyyy");  %>
             <table>
             <tr>
@@ -36,14 +37,12 @@
             <tr>
                 <td>Prenom : </td><td><%  out.println(a.getPrenom());%></td>
             </tr>
-                <tr>
-                    <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
-                </tr>
-                <tr>
-                    <td>Date naissance : </td><td><%  out.println(formatFr.format(a.getDateNaiss()));%></td>
-                </tr>
-                <tr>
-                    <td>Age : </td><td><% out.println(a.getAge());%></td>
-                </tr>
+            <tr>
+                <td>Date naissance : </td><td><%out.println(formatFr.format(a.getDateNaiss())); %></td>
+            </tr>
+            <tr>
+                <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
+            </tr>
+
         </table>
 </html>

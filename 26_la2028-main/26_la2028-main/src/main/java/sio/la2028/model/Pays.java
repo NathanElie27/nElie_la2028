@@ -30,7 +30,6 @@ public class Pays {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -38,7 +37,6 @@ public class Pays {
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -58,5 +56,6 @@ public class Pays {
         }
         lesAthletes.add(a);
     }
-    
+
+
 }

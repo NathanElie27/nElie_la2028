@@ -21,15 +21,6 @@
 	crossorigin="anonymous">
 
         <title>LOS ANGELES 2028</title>
-
-        <style>
-            body {
-		padding-top: 50px;
-            }
-                .special {
-		padding-top:50px;
-	}
-        </style>
     </head>
     <body>
       
@@ -54,7 +45,8 @@
                         <th>prenom</th>
                         <th>date naissance</th>
                         <th>age</th>
-                        <th>pays</th>                
+                        <th>pays</th>
+                        <th>sport</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +78,10 @@
                                 out.println("<td>");
                                 out.println(a.getPays().getNom());
                                 out.println("</td>");
-                               
+
+                                out.println("<td>");
+                                out.println(a.getSport().getNom());
+                                out.println("</td>");
                             }
                         %>
                     </tr>
@@ -94,5 +89,4 @@
             </table>
         </body>
 
-  
 </html>

@@ -9,11 +9,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sio.la2028.database.DaoAthlete;
+import sio.la2028.database.DaoSport;
 import sio.la2028.database.DaoPays;
-import sio.la2028.form.FormAthlete;
-import sio.la2028.model.Athlete;
+import sio.la2028.database.DaoSport;
+import sio.la2028.model.Sport;
 import sio.la2028.model.Pays;
+import sio.la2028.model.Sport;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -63,10 +64,10 @@ public class ServletSport extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletAthlete</title>");            
+            out.println("<title>Servlet ServletSport</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletAthlete at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletSport at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -87,32 +88,14 @@ public class ServletSport extends HttpServlet {
         
         String url = request.getRequestURI();  
        
-        // Récup et affichage les athletes 
-        if(url.equals("/la2028/ServletAthlete/lister"))
+        // Récup et affichage les Sports
+        if(url.equals("/la2028/ServletSport/lister"))
         {              
-            ArrayList<Athlete> lesAthletes = DaoAthlete.getLesAthletes(cnx);
-            request.setAttribute("pLesAthletes", lesAthletes);
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-           getServletContext().getRequestDispatcher("/vues/athlete/listerAthletes.jsp").forward(request, response);
+           getServletContext().getRequestDispatcher("/vues/sport/listerSport.jsp").forward(request, response);
         }
-        
-        if(url.equals("/la2028/ServletAthlete/consulter"))
-        { 
-            int idAthlete = Integer.parseInt((String)request.getParameter("idAthlete"));
-            Athlete a = DaoAthlete.getAthleteById(cnx, idAthlete);
-            request.setAttribute("pAthlete", a);
-            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-           getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp").forward(request, response);
-        }
-        
-          if(url.equals("/la2028/ServletAthlete/ajouter"))
-        {                   
-            ArrayList<Pays> lesPays = DaoPays.getLesPays(cnx);
-            request.setAttribute("pLesPays", lesPays);
-            this.getServletContext().getRequestDispatcher("/vues/athlete/ajouterAthlete.jsp" ).forward( request, response );
-        }
-        
-        
     }
 
     /**
@@ -126,46 +109,7 @@ public class ServletSport extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             
-        
-         FormAthlete form = new FormAthlete();
-		
-        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
-        Athlete ath = form.ajouterAthlete(request);
-        
-        /* Stockage du formulaire et de l'objet dans l'objet request */
-        request.setAttribute( "form", form );
-        request.setAttribute( "pAthlete", ath );
-		
-        if (form.getErreurs().isEmpty()){
-            Athlete athleteInsere =  DaoAthlete.addAthlete(cnx, ath);
-            if (athleteInsere != null ){
-                request.setAttribute( "pAthlete", athleteInsere );
-                this.getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp" ).forward( request, response );
-            }
-            else 
-            {
-                // Cas oùl'insertion en bdd a échoué
-                //renvoyer vers une page d'erreur 
-            }
-           
-        }
-        else
-        { 
-            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
-            ArrayList<Pays> lesCasernes = DaoPays.getLesPays(cnx);
-            request.setAttribute("pLesPays", lesCasernes);
-            this.getServletContext().getRequestDispatcher("/vues/athlete/ajouterAthlete.jsp" ).forward( request, response );
-        }
-        
-        
-        
-        
-        
-        
-        
     }
-
     /**
      * Returns a short description of the servlet.
      *

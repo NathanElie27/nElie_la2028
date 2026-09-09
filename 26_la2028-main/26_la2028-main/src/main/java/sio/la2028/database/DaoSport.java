@@ -27,15 +27,16 @@ public class DaoSport {
         
          ArrayList<Sport> lesSports = new ArrayList<Sport>();
         try{
-            requeteSql = cnx.prepareStatement("select * from sport");
+            requeteSql = cnx.prepareStatement("select s.id as s_id, s.nom as s_nom \n "+
+                    " from sports s");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
             
             while (resultatRequete.next()){
                 
                 Sport s = new Sport();
-                s.setId(resultatRequete.getInt("id"));
-                s.setNom(resultatRequete.getString("nom"));
+                s.setId(resultatRequete.getInt("s_id"));
+                s.setNom(resultatRequete.getString("s_nom"));
                 
                 lesSports.add(s);
             }

@@ -15,7 +15,7 @@ public class Epreuve {
         this.code = code;
     }
 
-    public String setLibelle() {
+    public String getLibelle() {
         return libelle;
     }
     public void setLibelle(String libelle) {

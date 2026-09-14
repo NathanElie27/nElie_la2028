@@ -8,23 +8,20 @@ public class Epreuve {
 
     public Epreuve () {  }
 
-    public int getId() {
+    public int getCode() {
         return code;
     }
-
-    public void setId(int code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
     public String setLibelle() {
         return libelle;
     }
-
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
 
     public  Sport getSport() { return sport; }
-
     public void setSport() { this.sport = sport ; }
 }

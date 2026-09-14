@@ -23,5 +23,8 @@ public class Epreuve {
     }
 
     public  Sport getSport() { return sport; }
-    public void setSport() { this.sport = sport ; }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
+    }
 }

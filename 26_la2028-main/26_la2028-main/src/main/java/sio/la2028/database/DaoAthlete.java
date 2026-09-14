@@ -110,20 +110,21 @@ public class DaoAthlete {
         return a;
     }
 
-    public static Athlete_Epreuve getAthlete_EpreuveById(Connection cnx) {
+    public static Athlete_Epreuve getEpreuveByAthleteId(Connection cnx, int idAthlete) {
 
         Athlete_Epreuve ae = new Athlete_Epreuve();
         try {
-            requeteSql = cnx.prepareStatement("SELECT a.nom as a_nom, a.prenom as a_prenom, ae.place as ae_place, e.libelle as e_libelle\n" +
+            requeteSql = cnx.prepareStatement("SELECT a.id as a_id, a.nom as a_nom,a.prenom as a_prenom,e.libelle as e_libelle, s.nom as s_nom, ae.place as ae_place \n " +
                     "from athlete a \n" +
-                    "INNER JOIN athlete_epreuve ae \n" +
+                    "INNER JOIN athlete_epreuve ae \n " +
                     "on a.id = ae.athlete_id \n" +
                     "INNER JOIN epreuve e \n" +
                     "on e.code = ae.epreuve_id \n" +
                     "INNER JOIN sports s \n" +
-                    "on e.sport_id=s.id; " +
-                    "where a.id = ?");
+                    "on e.sport_id=s.id \n" +
+                    "WHERE a.id = ?;");
 
+            requeteSql.setInt(1, idAthlete);
             resultatRequete = requeteSql.executeQuery();
 
             if (resultatRequete.next()) {
@@ -133,6 +134,7 @@ public class DaoAthlete {
                 Athlete a = new Athlete();
                 a.setNom(resultatRequete.getString("a_nom"));
                 a.setPrenom(resultatRequete.getString("a_prenom"));
+                a.setId(resultatRequete.getInt("a_id"));
 
                 Epreuve e = new Epreuve();
                 e.getLibelle(resultatRequete.getString("e_libelle"));

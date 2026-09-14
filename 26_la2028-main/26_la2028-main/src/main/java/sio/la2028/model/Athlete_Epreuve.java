@@ -34,5 +34,7 @@ public class Athlete_Epreuve {
         return place;
     }
 
-
+    public Athlete getLesAthletes(){
+        return getLesAthletes();
+    }
 }

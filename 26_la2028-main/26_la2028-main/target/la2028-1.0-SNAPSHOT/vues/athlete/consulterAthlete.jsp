@@ -9,6 +9,8 @@
 <%@page import="sio.la2028.model.Pays"%>
 <%@page import="sio.la2028.model.Sport"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
+<%@ page import="sio.la2028.model.Athlete_Epreuve" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +44,26 @@
     <tr>
         <td>Sport : </td><td><% out.println(a.getSport().getNom()); %></td>
     </tr>
+</table>
+<%
+    ArrayList<Athlete_Epreuve> lesAthletesEpreuves = (ArrayList)request.getAttribute("pLesAthletesEpreuves");
+%>
+<table class="table table-striped table-sm">
+    <tbody>
+    <tr>
+        <th>id</th>
+        <th>nom</th>
+    </tr>
+    <tr>
+        <%
+                for (Athlete_Epreuve ae : lesAthletesEpreuves) {
+                    out.println("<tr><td>");
+                    out.println(ae.getAthlete_id().getNom()+" "+ae.getAthlete_id().getPrenom());
+                    out.println("</td>");
+                }
+        %>
+    </tr>
+    </tbody>
 </table>
 </body>
 </html>

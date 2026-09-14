@@ -30,7 +30,7 @@ public class DaoEpreuve {
         try{
             requeteSql = cnx.prepareStatement("select e.code as e_code, e.libelle as e_libelle, s.id as s_id, s.nom as s_nom \n "+
                     " from epreuve e " +
-                    "inner join sport s "+
+                    "inner join sports s "+
                     "on s.id = e.sport_id");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
@@ -52,5 +52,4 @@ public class DaoEpreuve {
         return lesEpreuves;
 
     }
-
 }

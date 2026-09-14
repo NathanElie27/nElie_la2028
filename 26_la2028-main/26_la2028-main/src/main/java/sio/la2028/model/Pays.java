@@ -56,6 +56,4 @@ public class Pays {
         }
         lesAthletes.add(a);
     }
-
-
 }

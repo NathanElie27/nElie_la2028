@@ -13,9 +13,10 @@ import java.sql.Statement;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import sio.la2028.model.Athlete;
-import sio.la2028.model.Pays;
-import sio.la2028.model.Sport;
+
+import sio.la2028.model.*;
+
+import static sio.la2028.database.ConnexionBdd.connection;
 
 /**
  *
@@ -109,7 +110,44 @@ public class DaoAthlete {
         return a;
     }
 
-    public static Athlete addAthlete(Connection connection, Athlete ath){
+    public static Athlete_Epreuve getAthlete_EpreuveById(Connection cnx) {
+
+        Athlete_Epreuve ae = new Athlete_Epreuve();
+        try {
+            requeteSql = cnx.prepareStatement("SELECT a.nom as a_nom, a.prenom as a_prenom, ae.place as ae_place, e.libelle as e_libelle\n" +
+                    "from athlete a \n" +
+                    "INNER JOIN athlete_epreuve ae \n" +
+                    "on a.id = ae.athlete_id \n" +
+                    "INNER JOIN epreuve e \n" +
+                    "on e.code = ae.epreuve_id \n" +
+                    "INNER JOIN sports s \n" +
+                    "on e.sport_id=s.id; " +
+                    "where a.id = ?");
+
+            resultatRequete = requeteSql.executeQuery();
+
+            if (resultatRequete.next()) {
+
+                ae.setPlace(resultatRequete.getInt("ae_place"));
+
+                Athlete a = new Athlete();
+                a.setNom(resultatRequete.getString("a_nom"));
+                a.setPrenom(resultatRequete.getString("a_prenom"));
+
+                Epreuve e = new Epreuve();
+                e.getLibelle(resultatRequete.getString("e_libelle"));
+
+                ae.setAthlete_id(a);
+                ae.setEpreuve_id(e);
+
+            }
+            return ae;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+        public static Athlete addAthlete(Connection connection, Athlete ath){
         int idGenere = -1;
         try
         {

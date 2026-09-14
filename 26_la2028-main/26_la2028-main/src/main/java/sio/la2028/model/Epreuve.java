@@ -1,10 +1,13 @@
 package sio.la2028.model;
 
+import java.util.ArrayList;
+
 public class Epreuve {
 
     private int code;
     private String libelle;
     private Sport sport;
+    private ArrayList<Athlete_Epreuve> lesAthletesEpreuves;
 
     public Epreuve () {  }
 
@@ -15,7 +18,7 @@ public class Epreuve {
         this.code = code;
     }
 
-    public String getLibelle() {
+    public String getLibelle(String eLibelle) {
         return libelle;
     }
     public void setLibelle(String libelle) {
@@ -27,4 +30,14 @@ public class Epreuve {
     public void setSport(Sport sport) {
         this.sport = sport;
     }
+
+    public ArrayList<Athlete_Epreuve> getLesAthletesEpreuves() {
+        return lesAthletesEpreuves;
+    }
+
+    public void setLesAthletesEpreuves(ArrayList<Athlete_Epreuve> lesAthletesEpreuves) {
+        this.lesAthletesEpreuves = lesAthletesEpreuves;
+    }
+
+
 }

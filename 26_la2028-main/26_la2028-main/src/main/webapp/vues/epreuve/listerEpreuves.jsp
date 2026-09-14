@@ -58,7 +58,7 @@
                         out.println("</td>");
 
                         out.println("<td>");
-                        out.println(e.getLibelle());
+                        out.println(e.getLibelle(resultatRequete.getString("e_libelle")));
                         out.println("</td>");
 
                         out.println("<td>");

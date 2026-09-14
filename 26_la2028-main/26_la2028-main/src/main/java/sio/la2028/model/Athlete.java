@@ -4,10 +4,9 @@
  */
 package sio.la2028.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Calendar;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,6 +20,7 @@ public class Athlete {
     private LocalDate dateNaiss;
     private Pays pays;
     private Sport sport;
+    private ArrayList<Athlete_Epreuve> lesAthletesEpreuves;
 
     public Athlete() {
     }
@@ -78,5 +78,13 @@ public class Athlete {
 
     public int getAge() {
         return Period.between(getDateNaiss(), LocalDate.now()).getYears();
+    }
+
+    public ArrayList<Athlete_Epreuve> getLesAthletesEpreuves() {
+        return lesAthletesEpreuves;
+    }
+
+    public void setLesAthletesEpreuves(ArrayList<Athlete_Epreuve> lesAthletesEpreuves) {
+        this.lesAthletesEpreuves = lesAthletesEpreuves;
     }
 }

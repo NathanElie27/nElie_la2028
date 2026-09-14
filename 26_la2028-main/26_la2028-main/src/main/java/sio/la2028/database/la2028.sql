@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 14 sep. 2026 à 09:45
+-- Généré le : lun. 14 sep. 2026 à 11:57
 -- Version du serveur : 11.4.9-MariaDB
 -- Version de PHP : 8.3.28
 
@@ -36,7 +36,8 @@ CREATE TABLE IF NOT EXISTS `athlete` (
   `pays_id` int(11) NOT NULL,
   `sport_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_ath_pays` (`pays_id`)
+  KEY `fk_ath_pays` (`pays_id`),
+  KEY `fk_ath_sport` (`sport_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1020 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -71,15 +72,25 @@ CREATE TABLE IF NOT EXISTS `epreuve` (
   `sport_id` int(10) NOT NULL,
   PRIMARY KEY (`code`),
   KEY `fk_epr_sport_id` (`sport_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `epreuve`
 --
 
 INSERT INTO `epreuve` (`code`, `libelle`, `sport_id`) VALUES
-(1, 'epreuves de 200m brasse', 6),
-(2, 'epreuves de 200m brasse', 6);
+(1, '200m brasse', 6),
+(2, '200m papillon', 6),
+(3, 'Double homme', 3),
+(4, 'Double dame', 3),
+(5, 'Double mixte', 3),
+(6, 'Simple homme', 3),
+(7, 'Simple dame', 3),
+(12, 'Tour de France', 4),
+(13, '200m 4 nages', 6),
+(14, '400m 4 nages', 6),
+(15, 'Judo en équipe', 1),
+(16, 'Judo en solo', 1);
 
 -- --------------------------------------------------------
 
@@ -362,7 +373,8 @@ INSERT INTO `sports` (`id`, `nom`) VALUES
 -- Contraintes pour la table `athlete`
 --
 ALTER TABLE `athlete`
-  ADD CONSTRAINT `fk_ath_pays` FOREIGN KEY (`pays_id`) REFERENCES `pays` (`id`);
+  ADD CONSTRAINT `fk_ath_pays` FOREIGN KEY (`pays_id`) REFERENCES `pays` (`id`),
+  ADD CONSTRAINT `fk_ath_sport` FOREIGN KEY (`sport_id`) REFERENCES `sports` (`id`);
 
 --
 -- Contraintes pour la table `epreuve`

@@ -18,7 +18,7 @@ public class Epreuve {
         this.code = code;
     }
 
-    public String getLibelle(String eLibelle) {
+    public String getLibelle() {
         return libelle;
     }
     public void setLibelle(String libelle) {
@@ -26,7 +26,6 @@ public class Epreuve {
     }
 
     public  Sport getSport() { return sport; }
-
     public void setSport(Sport sport) {
         this.sport = sport;
     }

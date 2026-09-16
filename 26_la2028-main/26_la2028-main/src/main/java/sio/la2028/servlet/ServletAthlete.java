@@ -20,6 +20,7 @@ import sio.la2028.database.DaoAthlete;
 import sio.la2028.database.DaoPays;
 import sio.la2028.form.FormAthlete;
 import sio.la2028.model.Athlete;
+import sio.la2028.model.Athlete_Epreuve;
 import sio.la2028.model.Pays;
 
 /**
@@ -99,7 +100,9 @@ public class ServletAthlete extends HttpServlet {
         { 
             int idAthlete = Integer.parseInt((String)request.getParameter("idAthlete"));
             Athlete a = DaoAthlete.getAthleteById(cnx, idAthlete);
+            ArrayList<Athlete_Epreuve> aes = DaoAthlete.getEpreuveByAthleteId(cnx, idAthlete);
             request.setAttribute("pAthlete", a);
+            request.setAttribute("pLesAthletesEpreuves", aes);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp").forward(request, response);
         }

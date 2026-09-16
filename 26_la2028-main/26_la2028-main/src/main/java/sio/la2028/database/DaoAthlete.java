@@ -110,9 +110,9 @@ public class DaoAthlete {
         return a;
     }
 
-    public static Athlete_Epreuve getEpreuveByAthleteId(Connection cnx, int idAthlete) {
+    public static ArrayList<Athlete_Epreuve> getEpreuveByAthleteId(Connection cnx, int idAthlete) {
 
-        Athlete_Epreuve ae = new Athlete_Epreuve();
+        ArrayList<Athlete_Epreuve> aes = new ArrayList<>();
         try {
             requeteSql = cnx.prepareStatement("SELECT a.id as a_id, a.nom as a_nom,a.prenom as a_prenom,e.libelle as e_libelle, s.nom as s_nom, ae.place as ae_place \n " +
                     "from athlete a \n" +
@@ -127,8 +127,9 @@ public class DaoAthlete {
             requeteSql.setInt(1, idAthlete);
             resultatRequete = requeteSql.executeQuery();
 
-            if (resultatRequete.next()) {
+            while (resultatRequete.next()) {
 
+                Athlete_Epreuve ae = new Athlete_Epreuve();
                 ae.setPlace(resultatRequete.getInt("ae_place"));
 
                 Athlete a = new Athlete();
@@ -137,13 +138,15 @@ public class DaoAthlete {
                 a.setId(resultatRequete.getInt("a_id"));
 
                 Epreuve e = new Epreuve();
-                e.getLibelle(resultatRequete.getString("e_libelle"));
+                e.setLibelle(resultatRequete.getString("e_libelle"));
 
-                ae.setAthlete_id(a);
-                ae.setEpreuve_id(e);
+                ae.setAthlete(a);
+                ae.setEpreuve(e);
+
+                aes.add(ae);
 
             }
-            return ae;
+            return aes;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

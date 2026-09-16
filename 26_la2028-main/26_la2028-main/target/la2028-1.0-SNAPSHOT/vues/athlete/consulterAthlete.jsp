@@ -16,6 +16,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>LOS ANGELES 2028</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 </head>
 <body>
 <%
@@ -45,25 +49,41 @@
         <td>Sport : </td><td><% out.println(a.getSport().getNom()); %></td>
     </tr>
 </table>
-<%
-    ArrayList<Athlete_Epreuve> lesAthletesEpreuves = (ArrayList)request.getAttribute("pLesAthletesEpreuves");
-%>
-<table class="table table-striped table-sm">
-    <tbody>
-    <tr>
-        <th>id</th>
-        <th>nom</th>
-    </tr>
-    <tr>
+<br><br><br><br>
+<div class="container special">
+    <h2 class="h2">Liste des athlètes</h2>
+    <div class="table-responsive">
         <%
-                for (Athlete_Epreuve ae : lesAthletesEpreuves) {
-                    out.println("<tr><td>");
-                    out.println(ae.getAthlete_id().getNom()+" "+ae.getAthlete_id().getPrenom());
-                    out.println("</td>");
-                }
+            ArrayList<Athlete_Epreuve> lesAthletesEpreuves = (ArrayList)request.getAttribute("pLesAthletesEpreuves");
         %>
-    </tr>
-    </tbody>
-</table>
+        <table class="table table-striped table-sm">
+            <tbody>
+            <tr>
+                <th>id</th>
+                <th>epreuve</th>
+                <th>sport</th>
+            </tr>
+            <tr>
+                <%
+                        for (Athlete_Epreuve ae : lesAthletesEpreuves) {
+                            out.println("<tr><td>");
+                            out.println(ae.getPlace());
+                            out.println("</td>");
+
+                            out.println("<td>");
+                            out.println(ae.getEpreuve().getLibelle());
+                            out.println("</td>");
+
+                            out.println("<td>");
+                            out.println(a.getSport().getNom());
+                            out.println("</td>");
+
+                        }
+                %>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

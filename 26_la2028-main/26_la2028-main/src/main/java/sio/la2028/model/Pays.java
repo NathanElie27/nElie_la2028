@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Pays {
     private int id;
+    private String code;
     private String nom ;
     private ArrayList<Athlete> lesAthletes ;
 
@@ -41,10 +42,12 @@ public class Pays {
         this.nom = nom;
     }
 
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
     public ArrayList<Athlete> getLesAthletes() {
         return lesAthletes;
     }
-
     public void setLesAthletes(ArrayList<Athlete> lesAthletes) {
         this.lesAthletes = lesAthletes;
     }

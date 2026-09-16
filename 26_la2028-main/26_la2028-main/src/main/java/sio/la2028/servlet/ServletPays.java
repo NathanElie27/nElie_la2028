@@ -9,12 +9,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sio.la2028.database.DaoSport;
 import sio.la2028.database.DaoPays;
-import sio.la2028.database.DaoSport;
-import sio.la2028.model.Sport;
 import sio.la2028.model.Pays;
-import sio.la2028.model.Sport;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -94,7 +90,7 @@ public class ServletPays extends HttpServlet {
             ArrayList<Pays> lesPays = DaoPays.getLesPays(cnx);
             request.setAttribute("pLesPays", lesPays);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-            getServletContext().getRequestDispatcher("/vues/Pays/listerPays.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/vues/pays/listerPays.jsp").forward(request, response);
         }
     }
 

@@ -28,37 +28,32 @@
         </div>
     </div>
 </nav>
+<br><br><br><br>
 <div class="container special">
     <h2 class="h2">Liste des pays</h2>
     <div class="table-responsive">
             <%
-                    ArrayList<Pays> lesPays = (ArrayList)request.getAttribute("pLespays");
+                    ArrayList<Pays> lesPays = (ArrayList)request.getAttribute("pLesPays");
                 %>
         <table class="table table-striped table-sm">
             <thead>
             <tr>
                 <th>id</th>
                 <th>nom</th>
+                <th>code</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <%
-
-                    for (Pays p : lesPays)
-                    {
-                        out.println("<tr><td>");
-                        out.println(p.getId());
-                        out.println("</td>");
-
-                        out.println("<td>");
-                        out.println(p.getNom());
-                        out.println("</td></tr>");
-                    }
-                %>
+                <% for (Pays p : lesPays ) { %>
+                <tr>
+                    <td><%= p.getId() %></td>
+                    <td><%= p.getCode() %></td>
+                    <td><%= p.getNom() %></td>
+                <tr>
+                <% } %>
             </tr>
             </tbody>
         </table>
 </body>
-
 </html>

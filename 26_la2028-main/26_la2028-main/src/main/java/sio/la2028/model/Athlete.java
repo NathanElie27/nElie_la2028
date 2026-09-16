@@ -35,7 +35,6 @@ public class Athlete {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -43,7 +42,6 @@ public class Athlete {
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -51,7 +49,6 @@ public class Athlete {
     public String getPrenom() {
         return prenom;
     }
-
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -59,7 +56,6 @@ public class Athlete {
     public LocalDate getDateNaiss() {
         return dateNaiss;
     }
-
     public void setDateNaiss(LocalDate dateNaiss) {
         this.dateNaiss = dateNaiss;
     }
@@ -67,13 +63,11 @@ public class Athlete {
     public Pays getPays() {
         return pays;
     }
-
     public void setPays(Pays pays) {
         this.pays = pays;
     }
 
     public Sport getSport() { return sport; }
-
     public void setSport(Sport sport) { this.sport = sport; }
 
     public int getAge() {
@@ -83,7 +77,6 @@ public class Athlete {
     public ArrayList<Athlete_Epreuve> getLesAthletesEpreuves() {
         return lesAthletesEpreuves;
     }
-
     public void setLesAthletesEpreuves(ArrayList<Athlete_Epreuve> lesAthletesEpreuves) {
         this.lesAthletesEpreuves = lesAthletesEpreuves;
     }

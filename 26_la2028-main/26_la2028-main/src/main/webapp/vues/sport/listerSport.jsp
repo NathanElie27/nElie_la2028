@@ -41,17 +41,21 @@
                 <thead>
                     <tr>
                         <th>id</th>
+                        <th>code</th>
                         <th>nom</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <%
-
                             for (Sport a : lesSports)
                             {
                                 out.println("<tr><td>");
                                 out.println(a.getId());
+                                out.println("</td>");
+
+                                out.println("<tr><td>");
+                                out.println(a.getNom());
                                 out.println("</td>");
 
                                 out.println("<td>");

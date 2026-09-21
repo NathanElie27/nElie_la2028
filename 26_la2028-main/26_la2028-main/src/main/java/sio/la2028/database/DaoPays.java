@@ -81,7 +81,7 @@ public class DaoPays {
         ArrayList<Athlete> as = new ArrayList<>();
 
         try{
-            requeteSql = cnx.prepareStatement("SELECT p.id as p_id, p.code as p_code, p.nom as p_nom,a.id as a_id, a.nom as a_nom, a.prenom as a_prenom \n " +
+            requeteSql = cnx.prepareStatement("SELECT p.id as p_id, p.code as p_code, p.nom as p_nom, a.id as a_id, a.nom as a_nom, a.prenom as a_prenom \n " +
                     "FROM pays p \n" +
                     "INNER JOIN athlete a \n" +
                     "on p.id = a.pays_id \n" +
@@ -99,9 +99,9 @@ public class DaoPays {
                 p.setCode(resultatRequete.getString("p_code"));
 
                 Athlete a = new Athlete();
-                a.setId(resultatRequete.getInt(" p_id "));
-                a.setNom(resultatRequete.getString("p_nom"));
-                a.setPrenom(resultatRequete.getString("p_prenom"));
+                a.setId(resultatRequete.getInt("a_id"));
+                a.setNom(resultatRequete.getString("a_nom"));
+                a.setPrenom(resultatRequete.getString("a_prenom"));
 
                 as.add(a);
 
@@ -113,7 +113,7 @@ public class DaoPays {
             System.out.println("La requête de getLespays e généré une erreur");
         }
 
-     return null;
+     return as;
 
     }
 }

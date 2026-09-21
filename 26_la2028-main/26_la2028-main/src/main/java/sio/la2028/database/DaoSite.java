@@ -26,8 +26,8 @@ public class DaoSite {
             while (resultatRequete.next()){
 
                 Site s = new Site();
-                s.setId(resultatRequete.getInt("s_id"));
-                s.setNom(resultatRequete.getString("s_nom"));
+                s.setId(resultatRequete.getInt("id"));
+                s.setNom(resultatRequete.getString("nom"));
 
                 lesSites.add(s);
             }

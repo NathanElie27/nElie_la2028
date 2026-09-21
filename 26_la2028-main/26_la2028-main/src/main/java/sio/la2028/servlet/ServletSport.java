@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import sio.la2028.database.DaoSport;
 import sio.la2028.database.DaoPays;
 import sio.la2028.database.DaoSport;
+import sio.la2028.model.Athlete;
 import sio.la2028.model.Sport;
 import sio.la2028.model.Pays;
 import sio.la2028.model.Sport;
@@ -95,6 +96,15 @@ public class ServletSport extends HttpServlet {
             request.setAttribute("pLesSports", lesSports);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/listerSport.jsp").forward(request, response);
+        } if(url.equals("/la2028/ServletSport/consulter"))
+        {
+            int idSport = Integer.parseInt((String)request.getParameter("idSport"));
+            Sport p = DaoSport.getSportById(cnx, idSport);
+            ArrayList<Athlete> as = DaoSport.getAthletesBySportId(cnx, idSport);
+            request.setAttribute("pSport", p);
+            request.setAttribute("pLesAthletes", as);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+            getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
         }
     }
 

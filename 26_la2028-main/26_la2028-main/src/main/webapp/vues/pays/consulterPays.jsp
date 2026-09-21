@@ -20,15 +20,15 @@
           crossorigin="anonymous">
 </head>
 <%
-    Epreuve ep = (Epreuve) request.getAttribute("pEpreuve");
+    Pays p = (Pays) request.getAttribute("pPays");
 %>
-<h1><% out.println(ep.getLibelle()); %></h1>
+<h1><% out.println(p.getNom()); %></h1>
 <table>
         <tr>
-            <td>Id : </td><td><% out.println(ep.getCode()); %></td>
+            <td>Id : </td><td><% out.println(p.getId()); %></td>
         </tr>
         <tr>
-            <td>Nom : </td><td><% out.println(ep.getLibelle()); %></td>
+            <td>Nom : </td><td><% out.println(p.getNom()); %></td>
         </tr>
     </table>
 <br><br><br><br>

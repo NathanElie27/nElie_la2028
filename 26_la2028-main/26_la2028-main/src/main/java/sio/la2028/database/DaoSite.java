@@ -1,5 +1,6 @@
 package sio.la2028.database;
 
+import sio.la2028.model.Pays;
 import sio.la2028.model.Site;
 import sio.la2028.model.Sport;
 
@@ -39,5 +40,30 @@ public class DaoSite {
         }
         return lesSites;
 
+    }
+
+    public static Site getSiteById(Connection cnx, int idSite){
+
+        Site s = new Site();
+        try{
+            requeteSql = cnx.prepareStatement("SELECT * FROM site p " +
+                    "where id = ?;");
+
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1, idSite);
+            resultatRequete = requeteSql.executeQuery();
+
+            if (resultatRequete.next()){
+
+                s.setId(resultatRequete.getInt("id"));
+                s.setNom(resultatRequete.getString("nom"));
+
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return s;
     }
 }

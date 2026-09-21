@@ -54,7 +54,7 @@
         <!--   <a href ='../ServletAthlete/consulter?idAthlete="+ a.getId()+ "'>               -->
 
         <td><%= s.getId() %></td>
-        <td><a href="../ServletEpreuve/consulter?idEpreuve=<%= s.getId() %>"><%= s.getNom() %></a></td>
+        <td><a href="../ServletSite/consulter?idSite=<%= s.getId() %>"><%= s.getNom() %></a></td>
       <tr>
         <% } %>
       </tr>

@@ -94,6 +94,13 @@ public class ServletSite extends HttpServlet {
             request.setAttribute("pLesSites", lesSites);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/site/listerSite.jsp").forward(request, response);
+        }if(url.equals("/la2028/ServletSite/consulter"))
+        {
+            int idSite = Integer.parseInt((String)request.getParameter("idSite"));
+            Site s = DaoSite.getSiteById(cnx,idSite);
+            request.setAttribute("pSite", s);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+            getServletContext().getRequestDispatcher("/vues/site/consulterSite.jsp").forward(request, response);
         }
     }
 

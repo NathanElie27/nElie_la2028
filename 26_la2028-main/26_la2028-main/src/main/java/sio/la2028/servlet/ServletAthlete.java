@@ -106,8 +106,7 @@ public class ServletAthlete extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp").forward(request, response);
         }
-        
-          if(url.equals("/la2028/ServletAthlete/ajouter"))
+        if(url.equals("/la2028/ServletAthlete/ajouter"))
         {                   
             ArrayList<Pays> lesPays = DaoPays.getLesPays(cnx);
             request.setAttribute("pLesPays", lesPays);

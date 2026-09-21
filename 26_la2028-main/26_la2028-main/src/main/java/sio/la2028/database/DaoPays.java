@@ -75,4 +75,45 @@ public class DaoPays {
         }
         return p;
     }
+
+    public static ArrayList<Athlete> getAthletesByIdPays(Connection cnx, int idPays) {
+
+        ArrayList<Athlete> as = new ArrayList<>();
+
+        try{
+            requeteSql = cnx.prepareStatement("SELECT p.id as p_id, p.code as p_code, p.nom as p_nom,a.id as a_id, a.nom as a_nom, a.prenom as a_prenom \n " +
+                    "FROM pays p \n" +
+                    "INNER JOIN athlete a \n" +
+                    "on p.id = a.pays_id \n" +
+                    "where p.id = ?;");
+
+            requeteSql.setInt(1, idPays);
+            resultatRequete = requeteSql.executeQuery();
+
+            while(resultatRequete.next()){
+
+                Pays p = new Pays();
+
+                p.setId(resultatRequete.getInt("p_id"));
+                p.setNom(resultatRequete.getString("p_nom"));
+                p.setCode(resultatRequete.getString("p_code"));
+
+                Athlete a = new Athlete();
+                a.setId(resultatRequete.getInt(" p_id "));
+                a.setNom(resultatRequete.getString("p_nom"));
+                a.setPrenom(resultatRequete.getString("p_prenom"));
+
+                as.add(a);
+
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLespays e généré une erreur");
+        }
+
+     return null;
+
+    }
 }

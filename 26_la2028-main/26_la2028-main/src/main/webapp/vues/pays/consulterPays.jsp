@@ -9,10 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Consulter Pays</title>
 </head>
 <%
-    Pays p = (Pays)request.getAttribute("pAthlete");
+    Pays p = (Pays)request.getAttribute("pPays");
 %>
 <h1><% out.println(p.getNom()); %></h1>
 <body>

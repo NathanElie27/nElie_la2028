@@ -19,7 +19,7 @@ public class DaoSite {
 
         ArrayList<Site> lesSites = new ArrayList<Site>();
         try{
-            requeteSql = cnx.prepareStatement("select * from sports;");
+            requeteSql = cnx.prepareStatement("select * from site;");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
 

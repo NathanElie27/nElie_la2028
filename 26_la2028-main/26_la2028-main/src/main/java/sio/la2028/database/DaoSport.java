@@ -95,8 +95,8 @@ public class DaoSport {
 
                 Sport s = new Sport();
 
-                s.setId(resultatRequete.getInt("p_id"));
-                s.setNom(resultatRequete.getString("p_nom"));
+                s.setId(resultatRequete.getInt("s_id"));
+                s.setNom(resultatRequete.getString("s_nom"));
 
                 Athlete a = new Athlete();
                 a.setId(resultatRequete.getInt("a_id"));

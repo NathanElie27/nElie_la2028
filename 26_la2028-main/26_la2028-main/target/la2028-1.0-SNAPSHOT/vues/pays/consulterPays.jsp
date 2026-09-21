@@ -1,7 +1,8 @@
 <%@ page import="sio.la2028.model.Pays" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="sio.la2028.model.Athlete" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="sio.la2028.model.Epreuve" %><%--
   Created by IntelliJ IDEA.
   User: sio2
   Date: 21/09/2026
@@ -19,18 +20,15 @@
           crossorigin="anonymous">
 </head>
 <%
-    Pays p = (Pays)request.getAttribute("pPays");
+    Epreuve ep = (Epreuve) request.getAttribute("pEpreuve");
 %>
-<h1><% out.println(p.getNom()); %></h1>
+<h1><% out.println(ep.getLibelle()); %></h1>
 <table>
         <tr>
-            <td>Id : </td><td><% out.println(p.getId()); %></td>
+            <td>Id : </td><td><% out.println(ep.getCode()); %></td>
         </tr>
         <tr>
-            <td> Code : </td><td><% out.println(p.getCode());%></td>
-        </tr>
-        <tr>
-            <td>Nom : </td><td><% out.println(p.getNom()); %></td>
+            <td>Nom : </td><td><% out.println(ep.getLibelle()); %></td>
         </tr>
     </table>
 <br><br><br><br>

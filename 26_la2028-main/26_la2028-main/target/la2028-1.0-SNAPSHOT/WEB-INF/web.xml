@@ -47,6 +47,10 @@
         <url-pattern>/ServletEpreuve/lister</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ServletEpreuve</servlet-name>
+        <url-pattern>/ServletEpreuve/consulter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ServletPays</servlet-name>
         <url-pattern>/ServletPays/lister</url-pattern>
     </servlet-mapping>

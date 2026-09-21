@@ -96,10 +96,12 @@ public class ServletEpreuve extends HttpServlet {
         }if(url.equals("/la2028/ServletEpreuve/consulter"))
         {
             int idEpreuve = Integer.parseInt((String)request.getParameter("idEpreuve"));
+            Epreuve epreuve = DaoEpreuve.getEpreuveById(cnx, idEpreuve);
+            request.setAttribute("pEpreuve", epreuve);
             ArrayList<Athlete> ep = DaoEpreuve.getAthletesByEpreuveId(cnx, idEpreuve);
-            request.setAttribute("pEpreuve", ep);
+            request.setAttribute("pLesAthletes", ep);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-            getServletContext().getRequestDispatcher("/vues/sport/consulterEpreuve.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp").forward(request, response);
         }
     }
 

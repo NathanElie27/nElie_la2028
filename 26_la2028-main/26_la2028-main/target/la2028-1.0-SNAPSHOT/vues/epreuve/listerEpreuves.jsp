@@ -49,24 +49,15 @@
             </thead>
             <tbody>
             <tr>
-                <%
+                    <% for (Epreuve ep : lesEpreuves ) { %>
+            <tr>
+                <!--   <a href ='../ServletAthlete/consulter?idAthlete="+ a.getId()+ "'>               -->
 
-                    for (Epreuve e : lesEpreuves)
-                    {
-                        out.println("<tr><td>");
-                        out.println(e.getCode());
-                        out.println("</td>");
-
-                        out.println("<td>");
-                        out.println(e.getLibelle());
-                        out.println("</td>");
-
-                        out.println("<td>");
-                        out.println(e.getSport().getNom());
-                        out.println("</td>");
-
-                    }
-                %>
+                <td><%= ep.getCode() %></td>
+                <td><%= ep.getLibelle() %></td>
+                <td><a href="../ServletEpreuve/consulter?idEpreuve=<%= ep.getCode() %>"><%= ep.getLibelle() %></a></td>
+            <tr>
+                <% } %>
             </tr>
             </tbody>
         </table>

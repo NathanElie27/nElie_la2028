@@ -1,4 +1,6 @@
-<%@ page import="sio.la2028.model.Site" %><%--
+<%@ page import="sio.la2028.model.Site" %>
+<%@ page import="sio.la2028.model.Sport" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: sio2
   Date: 21/09/2026
@@ -28,5 +30,35 @@
       <td>Nom : </td><td><% out.println(s.getNom()); %></td>
     </tr>
   </table>
+  <br><br><br><br>
+  <div class="container special">
+    <h2 class="h2">Liste des Sports</h2>
+    <div class="table-responsive">
+      <%
+        ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("plesSports");
+      %>
+      <table class="table table-striped table-sm">
+        <tbody>
+        <tr>
+          <th>id</th>
+          <th>nom</th>
+        </tr>
+        <tr>
+          <%
+            for (Sport sp : lesSports) {
+              out.println("<tr><td>");
+              out.println(sp.getId());
+              out.println("</td>");
+
+              out.println("<td>");
+              out.println(sp.getNom());
+              out.println("</a></td>");
+            }
+          %>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

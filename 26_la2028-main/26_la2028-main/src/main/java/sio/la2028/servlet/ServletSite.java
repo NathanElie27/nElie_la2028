@@ -98,7 +98,9 @@ public class ServletSite extends HttpServlet {
         {
             int idSite = Integer.parseInt((String)request.getParameter("idSite"));
             Site s = DaoSite.getSiteById(cnx,idSite);
+            ArrayList<Sport> sp = DaoSite.getSportsBySiteId(cnx, idSite);
             request.setAttribute("pSite", s);
+            request.setAttribute("plesSports", sp);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/site/consulterSite.jsp").forward(request, response);
         }

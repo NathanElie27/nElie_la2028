@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 14 sep. 2026 à 11:57
+-- Généré le : lun. 21 sep. 2026 à 15:39
 -- Version du serveur : 11.4.9-MariaDB
 -- Version de PHP : 8.3.28
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `athlete` (
   PRIMARY KEY (`id`),
   KEY `fk_ath_pays` (`pays_id`),
   KEY `fk_ath_sport` (`sport_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1020 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2761 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `athlete`
@@ -57,7 +57,64 @@ INSERT INTO `athlete` (`id`, `nom`, `prenom`, `date_naissance`, `pays_id`, `spor
 (17, 'Faulkner', 'Kristen', '1992-12-18', 2, 4),
 (18, 'Dygert', 'Chloé', '1997-01-01', 2, 4),
 (19, 'James', 'LeBron', '1984-12-30', 2, 5),
-(20, 'Marchand', 'Leon', '2004-05-05', 1, 6);
+(20, 'Marchand', 'Leon', '2004-05-05', 1, 6),
+(27, 'Elie', 'Nathan', '2006-10-27', 1, 3),
+(67, 'Ravin', 'Jules', '2001-09-11', 93, 5),
+(2729, 'Manaudou', 'Florent', '1990-11-12', 1, 6),
+(2730, 'Ledecky', 'Katie', '1997-03-17', 2, 6),
+(2731, 'McIntosh', 'Summer', '2006-08-18', 38, 6),
+(2732, 'Titmus', 'Ariarne', '2000-09-07', 14, 6),
+(2733, 'Curry', 'Stephen', '1988-03-14', 2, 5),
+(2734, 'Durant', 'Kevin', '1988-09-29', 2, 5),
+(2735, 'Gobert', 'Rudy', '1992-06-26', 1, 5),
+(2736, 'Johannès', 'Marine', '1995-01-21', 1, 5),
+(2737, 'Evenepoel', 'Remco', '2000-01-25', 22, 4),
+(2738, 'Van Aert', 'Wout', '1994-09-15', 22, 4),
+(2739, 'Pidcock', 'Tom', '1999-07-30', 98, 4),
+(2740, 'Pogačar', 'Tadej', '1998-09-21', 196, 4),
+(2741, 'Vingegaard', 'Jonas', '1996-12-10', 77, 4),
+(2742, 'van der Poel', 'Mathieu', '1995-01-19', 171, 4),
+(2743, 'Alaphilippe', 'Julian', '1992-06-11', 1, 4),
+(2744, 'Agbegnenou', 'Clarisse', '1992-10-25', 1, 1),
+(2745, 'Abe', 'Hifumi', '1997-08-09', 120, 1),
+(2746, 'Abe', 'Uta', '2000-07-14', 120, 1),
+(2747, 'Andrade', 'Rebeca', '1999-05-08', 30, 2),
+(2748, 'Boyer', 'Marine', '2000-05-22', 1, 2),
+(2749, 'Melnikova', 'Angelina', '2000-07-18', 66, 2),
+(2750, 'Axelsen', 'Viktor', '1994-01-04', 77, 3),
+(2751, 'Antonsen', 'Anders', '1997-04-27', 77, 3),
+(2752, 'An', 'Se-young', '2002-02-05', 49, 3),
+(2753, 'Verstappen', 'Max', '1997-09-30', 171, 7),
+(2754, 'Hamilton', 'Lewis', '1985-01-07', 98, 7),
+(2755, 'Leclerc', 'Charles', '1997-10-16', 149, 7),
+(2756, 'Gasly', 'Pierre', '1996-02-07', 1, 7),
+(2757, 'Ocon', 'Esteban', '1996-09-17', 1, 7),
+(2758, 'Mbappé', 'Kylian', '1998-12-20', 1, 8),
+(2759, 'Dupont', 'Antoine', '1996-11-15', 1, 9),
+(2760, 'Mayer', 'Kevin', '1992-02-10', 1, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `athlete_epreuve`
+--
+
+DROP TABLE IF EXISTS `athlete_epreuve`;
+CREATE TABLE IF NOT EXISTS `athlete_epreuve` (
+  `athlete_id` int(10) NOT NULL,
+  `epreuve_id` int(10) NOT NULL,
+  `place` int(10) NOT NULL,
+  PRIMARY KEY (`athlete_id`),
+  KEY `fk_atep_epreuve_id` (`epreuve_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `athlete_epreuve`
+--
+
+INSERT INTO `athlete_epreuve` (`athlete_id`, `epreuve_id`, `place`) VALUES
+(10, 6, 1),
+(20, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -72,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `epreuve` (
   `sport_id` int(10) NOT NULL,
   PRIMARY KEY (`code`),
   KEY `fk_epr_sport_id` (`sport_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `epreuve`
@@ -86,11 +143,21 @@ INSERT INTO `epreuve` (`code`, `libelle`, `sport_id`) VALUES
 (5, 'Double mixte', 3),
 (6, 'Simple homme', 3),
 (7, 'Simple dame', 3),
-(12, 'Tour de France', 4),
+(12, 'Course en ligne', 4),
 (13, '200m 4 nages', 6),
 (14, '400m 4 nages', 6),
-(15, 'Judo en équipe', 1),
-(16, 'Judo en solo', 1);
+(15, 'Équipe mixte', 1),
+(16, 'Moins de 73 kg masculin', 1),
+(17, 'Concours général individuel', 2),
+(18, 'Tournoi masculin', 5),
+(19, 'Tournoi féminin', 5),
+(20, '50m nage libre', 6),
+(21, '100m nage libre', 6),
+(22, 'VTT Cross-country', 4),
+(23, 'Course', 7),
+(24, 'Tournoi masculin', 8),
+(25, 'Tournoi masculin', 9),
+(26, 'Décathlon', 10);
 
 -- --------------------------------------------------------
 
@@ -343,6 +410,37 @@ INSERT INTO `pays` (`id`, `code`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `site`
+--
+
+DROP TABLE IF EXISTS `site`;
+CREATE TABLE IF NOT EXISTS `site` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  `sport_id` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_sit_sport_id` (`sport_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `site`
+--
+
+INSERT INTO `site` (`id`, `nom`, `sport_id`) VALUES
+(1, 'LA Memorial Coliseum', 1),
+(2, '2028 Stadium (SoFi Stadium)', 1),
+(3, 'Intuit Dome', 1),
+(4, 'Dodger Stadium', 1),
+(5, 'Crypto.com Arena', 1),
+(6, 'LA Convention Center', 1),
+(7, 'Rose Bowl Stadium', 1),
+(8, 'Bassin de Sepulveda', 1),
+(9, 'Marine Stadium (Long Beach)', 1),
+(10, 'OKC Softball Park', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `sports`
 --
 
@@ -351,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `sports` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `sports`
@@ -363,7 +461,11 @@ INSERT INTO `sports` (`id`, `nom`) VALUES
 (3, 'Badminton'),
 (4, 'Cyclisme'),
 (5, 'Basketball'),
-(6, 'Natation');
+(6, 'Natation'),
+(7, 'Formule 1'),
+(8, 'Football'),
+(9, 'Rugby à 7'),
+(10, 'Athlétisme');
 
 --
 -- Contraintes pour les tables déchargées
@@ -377,10 +479,23 @@ ALTER TABLE `athlete`
   ADD CONSTRAINT `fk_ath_sport` FOREIGN KEY (`sport_id`) REFERENCES `sports` (`id`);
 
 --
+-- Contraintes pour la table `athlete_epreuve`
+--
+ALTER TABLE `athlete_epreuve`
+  ADD CONSTRAINT `fk_atep_athlete_id` FOREIGN KEY (`athlete_id`) REFERENCES `athlete` (`id`),
+  ADD CONSTRAINT `fk_atep_epreuve_id` FOREIGN KEY (`epreuve_id`) REFERENCES `epreuve` (`code`);
+
+--
 -- Contraintes pour la table `epreuve`
 --
 ALTER TABLE `epreuve`
   ADD CONSTRAINT `fk_epr_sport_id` FOREIGN KEY (`sport_id`) REFERENCES `sports` (`id`);
+
+--
+-- Contraintes pour la table `site`
+--
+ALTER TABLE `site`
+  ADD CONSTRAINT `fk_sit_sport_id` FOREIGN KEY (`sport_id`) REFERENCES `site` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

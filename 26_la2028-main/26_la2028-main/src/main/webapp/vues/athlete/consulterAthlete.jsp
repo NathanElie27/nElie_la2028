@@ -59,7 +59,7 @@
         <table class="table table-striped table-sm">
             <tbody>
             <tr>
-                <th>id</th>
+                <th>place</th>
                 <th>epreuve</th>
                 <th>sport</th>
             </tr>

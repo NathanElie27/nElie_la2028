@@ -39,17 +39,19 @@
             <thead>
             <tr>
                 <th>id</th>
-                <th>nom</th>
                 <th>code</th>
+                <th>nom</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <% for (Pays p : lesPays ) { %>
                 <tr>
-                    <td><%= p.getId() %></td>
-                    <td><%= p.getCode() %></td>
-                    <td><%= p.getNom() %></td>
+                <!--   <a href ='../ServletAthlete/consulter?idAthlete="+ a.getId()+ "'>               -->
+
+                <td><%= p.getId() %></td>
+                <td><%= p.getCode() %></td>
+                <td><a href="../ServletPays/consulter?idPays=<%= p.getId() %>"><%= p.getNom() %></a></td>
                 <tr>
                 <% } %>
             </tr>

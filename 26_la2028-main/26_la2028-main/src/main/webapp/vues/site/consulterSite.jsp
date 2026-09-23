@@ -22,6 +22,8 @@
     Site s = (Site) request.getAttribute("pSite");
   %>
   <h1><% out.println(s.getNom()); %></h1>
+
+  <% out.println("<img src='" + request.getContextPath() + s.getPhoto() + "' alt='Photo du Site'>"); %>
   <table>
     <tr>
       <td>Id : </td><td><% out.println(s.getId()); %></td>
@@ -37,6 +39,8 @@
       <%
         ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("plesSports");
       %>
+
+
       <table class="table table-striped table-sm">
         <tbody>
         <tr>

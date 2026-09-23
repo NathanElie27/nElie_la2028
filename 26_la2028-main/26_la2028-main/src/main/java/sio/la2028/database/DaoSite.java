@@ -58,6 +58,7 @@ public class DaoSite {
 
                 s.setId(resultatRequete.getInt("id"));
                 s.setNom(resultatRequete.getString("nom"));
+                s.setPhoto(resultatRequete.getString("photo_site"));
 
             }
         }

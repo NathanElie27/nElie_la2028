@@ -4,6 +4,7 @@ public class Site {
 
     private int id;
     private String nom;
+    private String photo;
 
     public Site() {
     }
@@ -22,5 +23,13 @@ public class Site {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

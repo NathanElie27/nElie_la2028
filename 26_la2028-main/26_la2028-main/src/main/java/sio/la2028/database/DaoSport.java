@@ -55,7 +55,7 @@ public class DaoSport {
 
         Sport s = new Sport();
         try{
-            requeteSql = cnx.prepareStatement("SELECT s.id as s_id, s.nom as s_nom \n" +
+            requeteSql = cnx.prepareStatement("SELECT s.id as s_id, s.nom as s_nom, s.photo_spo as photo \n" +
                     "FROM sports s \n" +
                     "where s.id = ?;");
 
@@ -67,7 +67,7 @@ public class DaoSport {
 
                 s.setId(resultatRequete.getInt("s_id"));
                 s.setNom(resultatRequete.getString("s_nom"));
-
+                s.setPhoto(resultatRequete.getString("photo"));
 
             }
         }

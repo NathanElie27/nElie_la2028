@@ -23,6 +23,9 @@
     Pays p = (Pays) request.getAttribute("pPays");
 %>
 <h1><% out.println(p.getNom()); %></h1>
+
+<% out.println("<img src='" + request.getContextPath() + p.getPhoto() + "' alt='Photo du Pays'>"); %>
+
 <table>
         <tr>
             <td>Id : </td><td><% out.println(p.getId()); %></td>

@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Start Page</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+</head>
     <body>
         <h1>Hello LA 2028 !</h1>
         <div>
             <a href="../la2028/ServletAthlete/lister">Athlete</a>
-            <a href="../la2028/ServletAthlete/lister">Sport</a>
-            <a href="../la2028/ServletAthlete/lister">Epreuve</a>
-            <a href="../la2028/ServletAthlete/lister">Pays</a>
-            <a href="../la2028/ServletAthlete/lister">Site</a>
-            <img src="images/lion.jpg" alt="image de lion">
+            <a href="../la2028/ServletSport/lister">Sport</a>
+            <a href="../la2028/ServletEpreuve/lister">Epreuve</a>
+            <a href="../la2028/ServletPays/lister">Pays</a>
+            <a href="../la2028/ServletSite/lister">Site</a>
         </div>
     <footer>
         <p>hello world ! </p>
     </footer>
     </body>
 </html>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a  href ='../la2028/ServletAthlete/lister' class="navbar-brand" href=".">Athletes</a>
+            <a  href ='../la2028/ServletSport/lister' class="navbar-brand" href=".">Sport</a>
+            <a  href ='../la2028/ServletEpreuve/lister' class="navbar-brand" href=".">Epreuves</a>
+            <a  href ='../la2028/ServletPays/lister' class="navbar-brand" href=".">Pays</a>
+            <a  href ='../la2028/ServletSite/lister' class="navbar-brand" href=".">Sites</a>
+        </div>
+    </div>
+</nav>

@@ -20,6 +20,7 @@ public class Athlete {
     private LocalDate dateNaiss;
     private Pays pays;
     private Sport sport;
+    private String photo;
     private ArrayList<Athlete_Epreuve> lesAthletesEpreuves;
 
     public Athlete() {
@@ -69,6 +70,9 @@ public class Athlete {
 
     public Sport getSport() { return sport; }
     public void setSport(Sport sport) { this.sport = sport; }
+
+    public String getPhoto() { return photo; }
+    public void setPhoto(String photo) { this.photo = photo; }
 
     public int getAge() {
         return Period.between(getDateNaiss(), LocalDate.now()).getYears();

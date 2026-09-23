@@ -28,6 +28,10 @@
 %>
 <h1><% out.println(a.getNom()); %></h1>
 
+<% out.println("<img src='" + request.getContextPath() + a.getPhoto() + "' alt='Photo de l'athlète'>"); %>
+
+
+
 <table>
     <tr>
         <td>Id : </td><td><% out.println(a.getId()); %></td>
@@ -78,6 +82,9 @@
                             out.println(a.getSport().getNom());
                             out.println("</td>");
 
+                            out.println("<td>");
+
+                            out.println("</td>");
                         }
                 %>
             </tr>

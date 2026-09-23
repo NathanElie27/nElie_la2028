@@ -53,7 +53,7 @@ public class DaoPays {
 
         Pays p = new Pays();
         try{
-            requeteSql = cnx.prepareStatement("SELECT p.id as p_id, p.code as p_code, p.nom as p_nom \n" +
+            requeteSql = cnx.prepareStatement("SELECT p.id as p_id, p.code as p_code, p.nom as p_nom, p.photo_pay as p_photo \n" +
                     "FROM pays p \n" +
                     "where id = ?;");
 
@@ -66,6 +66,7 @@ public class DaoPays {
                 p.setId(resultatRequete.getInt("p_id"));
                 p.setNom(resultatRequete.getString("p_nom"));
                 p.setCode(resultatRequete.getString("p_code"));
+                p.setPhoto(resultatRequete.getString("p_photo"));
 
             }
         }

@@ -23,14 +23,19 @@
         <title>LOS ANGELES 2028</title>
     </head>
     <body>
-      
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a  href ='../ServletAthlete/lister' class="navbar-brand" href=".">Système de gestion des athlètes</a>
-			</div>
-		</div>
-	</nav>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href='../index.html' class="navbar-brand">Accueil</a>
+                <a  href ='../ServletAthlete/lister' class="navbar-brand" href=".">Athletes</a>
+                <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Sport</a>
+                <a  href ='../ServletEpreuve/lister' class="navbar-brand" href=".">Epreuves</a>
+                <a  href ='../ServletPays/lister' class="navbar-brand" href=".">Pays</a>
+                <a  href ='../ServletSite/lister' class="navbar-brand" href=".">Sites</a>
+            </div>
+        </div>
+    </nav>
        <div class="container special">
             <h2 class="h2">Liste des athlètes</h2>
 		<div class="table-responsive">

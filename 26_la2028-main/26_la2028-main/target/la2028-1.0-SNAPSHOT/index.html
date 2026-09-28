@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello LA 2028 !</h1>
-        <div>
-            <a href="../la2028/ServletAthlete/lister">Athlete</a>
-            <a href="../la2028/ServletAthlete/lister">Sport</a>
-            <a href="../la2028/ServletAthlete/lister">Epreuve</a>
-            <a href="../la2028/ServletAthlete/lister">Pays</a>
-            <a href="../la2028/ServletAthlete/lister">Site</a>
-            <img src="images/lion.jpg" alt="image de lion">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA 2028 - Gestion</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS Personnalisé -->
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+<!-- Fond avec image et dégradé sombre -->
+<div class="bg-image"></div>
+
+<div class="wrapper d-flex flex-column min-vh-100">
+
+    <!-- Barre de navigation minimaliste -->
+    <header class="d-flex justify-content-between align-items-center p-4 p-md-5">
+        <div class="logo">
+            <a href="#" class="text-white text-decoration-none fs-3 fw-bold">LA<span class="highlight-text">28</span></a>
         </div>
-    <footer>
-        <p>hello world ! </p>
-    </footer>
-    </body>
+
+        <!-- Liens discrets inspirés de l'image -->
+        <div class="nav-links d-none d-md-flex gap-4">
+            <a href="../la2028/ServletAthlete/lister">Athlètes</a>
+            <a href="../la2028/ServletSport/lister">Sports</a>
+            <a href="../la2028/ServletEpreuve/lister">Épreuves</a>
+            <a href="../la2028/ServletPays/lister">Pays</a>
+            <a href="../la2028/ServletSite/lister">Sites</a>
+        </div>
+
+
+    </header>
+
+    <!-- Contenu principal aligné à gauche -->
+    <main class="flex-grow-1 d-flex align-items-center">
+        <div class="container-fluid px-4 px-md-5">
+            <div class="row">
+                <div class="col-12 col-lg-7 text-content">
+
+                    <!-- Titre géant -->
+                    <h1 class="giant-title">
+                        <span class="highlight-text d-block" id="interactive-text">JEUX OLYMPIQUES</span>
+                        <span class="text-white d-block">& PARALYMPIQUES</span>
+                    </h1>
+
+                    <!-- Paragraphe descriptif -->
+                    <p class="description mt-4 mb-5 text-white-50">
+                        Gérez les athlètes, les délégations et les épreuves sportives de la 34e olympiade.
+                        De l'inscription à la compétition, accédez à l'ensemble du système de gestion des
+                        <strong>Jeux de Los Angeles 2028</strong>, toujours basé sur les dernières données en temps réel.
+                    </p>
+
+                    <!-- Call to action (lien fléché) -->
+                    <a href="../la2028/ServletAthlete/lister" class="cta-link">
+                        DÉCOUVRIR LES ATHLÈTES <span class="arrow">></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="style/script.js"></script>
+</body>
 </html>

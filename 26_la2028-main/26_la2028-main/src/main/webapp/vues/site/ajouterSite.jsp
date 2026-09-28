@@ -11,6 +11,7 @@
 <%@page import="sio.la2028.form.FormAthlete"%>
 <%@ page import="sio.la2028.form.FormEpreuve" %>
 <%@ page import="sio.la2028.model.Sport" %>
+<%@ page import="sio.la2028.form.FormSite" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 <h1>NOUVEAU Site</h1>
 
 <%
-  FormEpreuve form = (FormEpreuve)request.getAttribute("form");
+  FormSite form = (FormSite)request.getAttribute("form");
 %>
 
 <form class="form-inline" action="ajouter" method="POST">

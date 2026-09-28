@@ -103,6 +103,8 @@ public class DaoSite {
 
     public static Site addSite(Connection connection, Site sit){
         int idGenere = -1;
+        PreparedStatement requeteSql = null;
+        ResultSet resultatRequete = null;
         try
         {
             //preparation de la requete
@@ -111,7 +113,7 @@ public class DaoSite {
             // supprimer ce paramètre en cas de requête sans auto_increment.
             requeteSql=connection.prepareStatement("INSERT INTO site (nom, sport_id)\n" +
                     "VALUES (?,?)", requeteSql.RETURN_GENERATED_KEYS );
-            requeteSql.setInt(1, sit.getId());
+            requeteSql.setString(1, sit.getNom());
             requeteSql.setInt(2, sit.getSport().getId());
 
             /* Exécution de la requête */

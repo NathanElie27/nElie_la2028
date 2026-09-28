@@ -99,15 +99,15 @@ public class ServletSite extends HttpServlet {
             Site s = DaoSite.getSiteById(cnx,idSite);
             ArrayList<Sport> sp = DaoSite.getSportsBySiteId(cnx, idSite);
             request.setAttribute("pSite", s);
-            request.setAttribute("plesSports", sp);
+            request.setAttribute("pLesSports", sp);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/site/consulterSite.jsp").forward(request, response);
         }
-        if(url.equals("/la2028/ServlerSite/ajouter"))
+        if(url.equals("/la2028/ServletSite/ajouter"))
         {
             ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
             request.setAttribute("pLesSports", lesSports);
-            this.getServletContext().getRequestDispatcher("/vues/site/ServlerSite.jsp" ).forward( request, response );
+            this.getServletContext().getRequestDispatcher("/vues/site/ajouterSite.jsp" ).forward( request, response );
         }
     }
 

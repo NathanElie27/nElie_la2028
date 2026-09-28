@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import sio.la2028.database.DaoSport;
 import sio.la2028.database.DaoPays;
 import sio.la2028.database.DaoSport;
+import sio.la2028.form.FormSport;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Sport;
 import sio.la2028.model.Pays;
@@ -30,17 +31,16 @@ import java.util.logging.Logger;
  * @author zakina
  */
 public class ServletSport extends HttpServlet {
-    
-    Connection cnx ;
-            
+
+    Connection cnx;
+
     @Override
-    public void init()
-    {     
-        ServletContext servletContext=getServletContext();
-        
+    public void init() {
+        ServletContext servletContext = getServletContext();
+
         System.out.println("SERVLKET CONTEXT=" + servletContext.getContextPath());
-        cnx = (Connection)servletContext.getAttribute("connection"); 
-        
+        cnx = (Connection) servletContext.getAttribute("connection");
+
         try {
             System.out.println("INIT SERVLET=" + cnx.getSchema());
         } catch (SQLException ex) {
@@ -52,10 +52,10 @@ public class ServletSport extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -75,64 +75,91 @@ public class ServletSport extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String url = request.getRequestURI();  
-       
+
+        String url = request.getRequestURI();
+
         // Récup et affichage les Sports
-        if(url.equals("/la2028/ServletSport/lister"))
-        {              
+        if (url.equals("/la2028/ServletSport/lister")) {
             ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
             request.setAttribute("pLesSports", lesSports);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-           getServletContext().getRequestDispatcher("/vues/sport/listerSport.jsp").forward(request, response);
-        } if(url.equals("/la2028/ServletSport/consulter"))
-        {
-            int idSport = Integer.parseInt((String)request.getParameter("idSport"));
+            getServletContext().getRequestDispatcher("/vues/sport/listerSport.jsp").forward(request, response);
+        }
+        if (url.equals("/la2028/ServletSport/consulter")) {
+            int idSport = Integer.parseInt((String) request.getParameter("idSport"));
             Sport p = DaoSport.getSportById(cnx, idSport);
             ArrayList<Athlete> as = DaoSport.getAthletesBySportId(cnx, idSport);
             request.setAttribute("pSport", p);
             request.setAttribute("pLesAthletes", as);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
-        }if(url.equals("/la2028/ServletSport/ajouter"))
-        {
+        }
+        if (url.equals("/la2028/ServletSport/ajouter")) {
             ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
             request.setAttribute("pLesSports", lesSports);
-            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
+            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp").forward(request, response);
         }
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        FormSport form = new FormSport();
+
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Sport spt = form.ajouterSport(request);
+
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute("form", form);
+        request.setAttribute("pSport", spt);
+
+        if (form.getErreurs().isEmpty()) {
+            Sport SportInsere = DaoSport.addSport(cnx, spt);
+            if (SportInsere != null) {
+                request.setAttribute("pSport", SportInsere);
+                this.getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
+            } else {
+                // Cas oùl'insertion en bdd a échoué
+                //renvoyer vers une page d'erreur
+            }
+
+        } else {
+            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<Pays> lesCasernes = DaoPays.getLesPays(cnx);
+            request.setAttribute("pLesPays", lesCasernes);
+            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp").forward(request, response);
+        }
     }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        /**
+         * Returns a short description of the servlet.
+         *
+         * @return a String containing servlet description
+         */
+        @Override
+        public String getServletInfo () {
+            return "Short description";
+        }// </editor-fold>
 
 }

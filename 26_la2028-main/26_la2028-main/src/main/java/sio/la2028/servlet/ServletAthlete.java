@@ -127,44 +127,39 @@ public class ServletAthlete extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             
-        
-         FormAthlete form = new FormAthlete();
-		
+
+
+        FormAthlete form = new FormAthlete();
+
         /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
         Athlete ath = form.ajouterAthlete(request);
-        
+
         /* Stockage du formulaire et de l'objet dans l'objet request */
         request.setAttribute( "form", form );
         request.setAttribute( "pAthlete", ath );
-		
+
         if (form.getErreurs().isEmpty()){
             Athlete athleteInsere =  DaoAthlete.addAthlete(cnx, ath);
             if (athleteInsere != null ){
                 request.setAttribute( "pAthlete", athleteInsere );
                 this.getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp" ).forward( request, response );
             }
-            else 
+            else
             {
                 // Cas oùl'insertion en bdd a échoué
                 //renvoyer vers une page d'erreur 
             }
-           
+
         }
         else
-        { 
+        {
             // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
             ArrayList<Pays> lesCasernes = DaoPays.getLesPays(cnx);
             request.setAttribute("pLesPays", lesCasernes);
             this.getServletContext().getRequestDispatcher("/vues/athlete/ajouterAthlete.jsp" ).forward( request, response );
         }
-        
-        
-        
-        
-        
-        
-        
+
+
     }
 
     /**

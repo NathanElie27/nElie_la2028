@@ -116,6 +116,7 @@ public class DaoSport {
 
     public static Sport addSport(Connection connection, Sport spt){
         int idGenere = -1;
+
         try
         {
             //preparation de la requete

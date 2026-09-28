@@ -22,29 +22,16 @@
   FormSport form = (FormSport)request.getAttribute("form");
 %>
 
-<form class="form-inline" action="ajouter" method="POST">
-  <label for="nom">NOM : </label>
-  <input id="nom" type="text" name="nom"  size="30" maxlength="30">
-  </br>
+  <form class="form-inline" action="ajouter" method="POST">
+    <label for="nom">NOM : </label>
+    <input id="nom" type="text" name="nom"  size="50" maxlength="50">
+    </br>
 
-  <%-- Champ Liste des pays --%>
-  <label for="pays">Pays : </label>
-  <select name="idPays">
-    <%
-      ArrayList<Pays> lesPays= (ArrayList)request.getAttribute("pLesPays");
-      for (int i=0; i<lesPays.size();i++){
-        Pays p = lesPays.get(i);
-        out.println("<option value='" + p.getId()+"'>" + p.getNom()+"</option>" );
-      }
-    %>
-  </select>
-  </br>
+    <%-- Champ Liste des pays --%>
+    </br>
 
-  <input type="submit" name="valider" id="valider" value="Valider"/>
-</form>
-
-
-
+    <input type="submit" name="valider" id="valider" value="Valider"/>
+  </form>
 
 </body>
 </html>

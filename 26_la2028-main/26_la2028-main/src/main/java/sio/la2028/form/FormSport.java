@@ -29,8 +29,8 @@ public class FormSport {
 
     //méthode de validation du champ de saisie nom
     private void validationNom( String nom ) throws Exception {
-        if ( nom != null && nom.length() < 3 ) {
-            throw new Exception( "Le nom du sport doit contenir moins de 50 caractères." );
+        if ( nom != null && nom.length() < 3 || nom.length() > 50) {
+            throw new Exception( "Le nom du sport doit contenir moins de 50 caractères et plus de 3 caractères." );
         }
     }
 

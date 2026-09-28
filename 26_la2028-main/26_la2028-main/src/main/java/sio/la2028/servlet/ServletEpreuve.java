@@ -10,9 +10,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import sio.la2028.database.DaoEpreuve;
+import sio.la2028.database.DaoPays;
 import sio.la2028.database.DaoSport;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Epreuve;
+import sio.la2028.model.Pays;
 import sio.la2028.model.Sport;
 
 import java.io.IOException;
@@ -102,6 +104,12 @@ public class ServletEpreuve extends HttpServlet {
             request.setAttribute("pLesAthletes", ep);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp").forward(request, response);
+        }
+        if(url.equals("/la2028/ServletEpreuve/ajouter"))
+        {
+            ArrayList<Epreuve> lesEpreuves = DaoEpreuve.getLesEpreuves(cnx);
+            request.setAttribute("pLesEpreuves", lesEpreuves);
+            this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
         }
     }
 

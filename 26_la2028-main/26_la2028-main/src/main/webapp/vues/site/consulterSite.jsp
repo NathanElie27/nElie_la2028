@@ -37,7 +37,7 @@
     <h2 class="h2">Liste des Sports</h2>
     <div class="table-responsive">
       <%
-        ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("plesSports");
+        ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("pLesSports");
       %>
 
 

@@ -103,8 +103,6 @@ public class DaoSite {
 
     public static Site addSite(Connection connection, Site sit){
         int idGenere = -1;
-        PreparedStatement requeteSql = null;
-        ResultSet resultatRequete = null;
         try
         {
             //preparation de la requete

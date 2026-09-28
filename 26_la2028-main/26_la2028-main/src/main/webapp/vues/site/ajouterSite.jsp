@@ -25,29 +25,25 @@
   FormSite form = (FormSite)request.getAttribute("form");
 %>
 
-<form class="form-inline" action="ajouter" method="POST">
-  <label for="nom">Nom : </label>
-  <input id="nom" type="text" name="nom"  size="30" maxlength="30">
-  </br>
+  <form class="form-inline" action="ajouter" method="POST">
+    <label for="nom">Nom : </label>
+    <input id="nom" type="text" name="nom"  size="30" maxlength="30">
+    </br>
 
-  <%-- Champ Liste des pays --%>
-  <label for="sport">Sport : </label>
-  <select name="idSport">
-    <%
-      ArrayList<Sport> lesSports= (ArrayList)request.getAttribute("pLesSports");
-      for (int i=0; i<lesSports.size();i++){
-        Sport sp = lesSports.get(i);
-        out.println("<option value='" + sp.getId()+"'>" + sp.getNom()+"</option>" );
-      }
-    %>
-  </select>
-  </br>
+    <%-- Champ Liste des pays --%>
+    <label for="sport">Sport : </label>
+    <select name="idSport">
+      <%
+        ArrayList<Sport> lesSports= (ArrayList)request.getAttribute("pLesSports");
+        for (int i=0; i<lesSports.size();i++){
+          Sport sp = lesSports.get(i);
+          out.println("<option value='" + sp.getId()+"'>" + sp.getNom()+"</option>" );
+        }
+      %>
+    </select>
+    </br>
 
-  <input type="submit" name="valider" id="valider" value="Valider"/>
-</form>
-
-
-
-
+    <input type="submit" name="valider" id="valider" value="Valider"/>
+  </form>
 </body>
 </html>

@@ -5,6 +5,7 @@ public class Site {
     private int id;
     private String nom;
     private String photo;
+    private Sport sport;
 
     public Site() {
     }
@@ -23,6 +24,14 @@ public class Site {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
     }
 
     public String getPhoto() {

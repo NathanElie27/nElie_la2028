@@ -139,6 +139,7 @@ public class ServletSport extends HttpServlet {
             Sport SportInsere = DaoSport.addSport(cnx, spt);
             if (SportInsere != null) {
                 request.setAttribute("pSport", SportInsere);
+                request.setAttribute("pLesAthletes", new ArrayList<Athlete>());
                 this.getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
             } else {
                 // Cas oùl'insertion en bdd a échoué

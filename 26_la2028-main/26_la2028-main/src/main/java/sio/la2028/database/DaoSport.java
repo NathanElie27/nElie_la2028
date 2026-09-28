@@ -8,10 +8,7 @@ import sio.la2028.model.Athlete;
 import sio.la2028.model.Pays;
 import sio.la2028.model.Sport;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -116,5 +113,40 @@ public class DaoSport {
         return as;
 
     }
-    
+
+    public static Sport addSport(Connection connection, Sport spt){
+        int idGenere = -1;
+        try
+        {
+            //preparation de la requete
+            // id (clé primaire de la table Sport) est en auto_increment,donc on ne renseigne pas cette valeur
+            // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
+            // supprimer ce paramètre en cas de requête sans auto_increment.
+            requeteSql=connection.prepareStatement("INSERT INTO Sport (nom, pays_id)\n" +
+                    "VALUES (?,?)", requeteSql.RETURN_GENERATED_KEYS );
+            requeteSql.setString(1, spt.getNom());
+
+            /* Exécution de la requête */
+            requeteSql.executeUpdate();
+
+            // Récupération de id auto-généré par la bdd dans la table client
+            resultatRequete = requeteSql.getGeneratedKeys();
+            while ( resultatRequete.next() ) {
+                idGenere = resultatRequete.getInt( 1 );
+                spt.setId(idGenere);
+
+                spt = DaoSport.getSportById(connection, spt.getId());
+            }
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return spt ;
+    }
+
+
+
 }

@@ -9,10 +9,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sio.la2028.database.DaoSite;
-import sio.la2028.database.DaoSport;
-import sio.la2028.database.DaoPays;
-import sio.la2028.database.DaoSport;
+import sio.la2028.database.*;
+import sio.la2028.form.FormEpreuve;
+import sio.la2028.form.FormSite;
 import sio.la2028.model.*;
 
 import java.io.IOException;
@@ -104,6 +103,12 @@ public class ServletSite extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/site/consulterSite.jsp").forward(request, response);
         }
+        if(url.equals("/la2028/ServlerSite/ajouter"))
+        {
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/site/ServlerSite.jsp" ).forward( request, response );
+        }
     }
 
     /**
@@ -117,6 +122,41 @@ public class ServletSite extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+
+        FormSite form = new FormSite();
+
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Site sit = form.addSite(request);
+
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "pSite", sit );
+
+        if (form.getErreurs().isEmpty()){
+            Site siteInsere =  DaoSite.addSite(cnx, sit);
+            if (siteInsere != null ){
+
+                request.setAttribute( "pSite", siteInsere );
+                request.setAttribute("pLesSports", new ArrayList<Sport>());
+                this.getServletContext().getRequestDispatcher("/vues/site/consulterSite.jsp" ).forward( request, response );
+            }
+            else
+            {
+                // Cas oùl'insertion en bdd a échoué
+                //renvoyer vers une page d'erreur
+            }
+
+        }
+        else
+        {
+            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/site/ajouterSite.jsp" ).forward( request, response );
+        }
+
+
     }
     /**
      * Returns a short description of the servlet.

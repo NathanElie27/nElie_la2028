@@ -9,9 +9,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import sio.la2028.database.DaoAthlete;
 import sio.la2028.database.DaoEpreuve;
 import sio.la2028.database.DaoPays;
 import sio.la2028.database.DaoSport;
+import sio.la2028.form.FormAthlete;
+import sio.la2028.form.FormEpreuve;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Epreuve;
 import sio.la2028.model.Pays;
@@ -124,6 +127,39 @@ public class ServletEpreuve extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+
+        FormEpreuve form = new FormEpreuve();
+
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Epreuve epr = form.addEpreuve(request);
+
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "pEpreuve", epr );
+
+        if (form.getErreurs().isEmpty()){
+            Epreuve epreuveInsere =  DaoEpreuve.addEpreuve(cnx, epr);
+            if (epreuveInsere != null ){
+                request.setAttribute( "pEpreuve", epreuveInsere );
+                this.getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp" ).forward( request, response );
+            }
+            else
+            {
+                // Cas oùl'insertion en bdd a échoué
+                //renvoyer vers une page d'erreur
+            }
+
+        }
+        else
+        {
+            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
+        }
+
+
     }
     /**
      * Returns a short description of the servlet.

@@ -110,8 +110,8 @@ public class ServletEpreuve extends HttpServlet {
         }
         if(url.equals("/la2028/ServletEpreuve/ajouter"))
         {
-            ArrayList<Epreuve> lesEpreuves = DaoEpreuve.getLesEpreuves(cnx);
-            request.setAttribute("pLesEpreuves", lesEpreuves);
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
             this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
         }
     }
@@ -141,7 +141,9 @@ public class ServletEpreuve extends HttpServlet {
         if (form.getErreurs().isEmpty()){
             Epreuve epreuveInsere =  DaoEpreuve.addEpreuve(cnx, epr);
             if (epreuveInsere != null ){
+
                 request.setAttribute( "pEpreuve", epreuveInsere );
+                request.setAttribute("pLesAthletes", new ArrayList<Athlete>());
                 this.getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp" ).forward( request, response );
             }
             else

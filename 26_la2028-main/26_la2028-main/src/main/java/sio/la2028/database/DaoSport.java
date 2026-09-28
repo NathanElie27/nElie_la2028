@@ -122,8 +122,8 @@ public class DaoSport {
             // id (clé primaire de la table Sport) est en auto_increment,donc on ne renseigne pas cette valeur
             // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
             // supprimer ce paramètre en cas de requête sans auto_increment.
-            requeteSql=connection.prepareStatement("INSERT INTO Sport (nom, pays_id)\n" +
-                    "VALUES (?,?)", requeteSql.RETURN_GENERATED_KEYS );
+            requeteSql=connection.prepareStatement("INSERT INTO sports (nom) \n" +
+                    "VALUES (?);", requeteSql.RETURN_GENERATED_KEYS );
             requeteSql.setString(1, spt.getNom());
 
             /* Exécution de la requête */

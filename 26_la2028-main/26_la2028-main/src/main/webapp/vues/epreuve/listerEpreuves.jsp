@@ -3,10 +3,7 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sio.la2028.model.Epreuve"%>
-<%@page import="sio.la2028.model.Pays"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,10 +35,10 @@
 </jsp:include>
 
 <main class="container py-5 flex-grow-1 modules-section" style="padding-top: 3rem !important;">
-    <div class="mx-auto" style="max-width: 900px;">
+    <div class="mx-auto" style="max-width: 850px;">
 
         <!-- En-tête -->
-        <div class="d-flex align-items-end justify-content-between mb-4 fade-in">
+        <div class="d-flex align-items-end justify-content-between mb-4">
             <div>
                 <span class="badge mb-2" style="background-color: var(--la-magenta); font-size: 0.85rem; letter-spacing: 1px;">COMPÉTITIONS</span>
                 <h1 class="text-dark m-0" style="font-family: 'Anton', sans-serif; font-size: 3rem; letter-spacing: 1.5px;">LISTE DES ÉPREUVES</h1>
@@ -52,16 +49,14 @@
         </div>
 
         <!-- Tableau -->
-        <div class="light-card fade-in p-0">
+        <div class="light-card p-0">
             <div class="table-responsive" style="background-color: #ffffff;">
                 <% ArrayList<Epreuve> lesEpreuves = (ArrayList)request.getAttribute("pLesEpreuves"); %>
                 <table class="table table-light-theme mb-0 w-100">
                     <thead>
                     <tr>
-                        <th class="py-3 px-4 text-center" style="width: 100px;">Code</th>
-                        <th class="py-3 px-4">Libellé de l'épreuve</th>
-                        <!-- S'il n'y a pas de nom de sport, on garde l'en-tête pour la mise en page -->
-                        <th class="py-3 px-4 text-center">Action</th>
+                        <th class="py-3 text-center" style="width: 150px; font-size: 0.95rem;">Code</th>
+                        <th class="py-3 text-center" style="font-size: 0.95rem;">Libellé de l'épreuve</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -69,28 +64,26 @@
                         for (Epreuve ep : lesEpreuves) { %>
                     <tr style="transition: background 0.2s;">
 
-                        <td class="py-3 px-4 align-middle text-center">
-                            <span class="badge bg-light text-secondary border px-2 py-1">#<%= ep.getCode() %></span>
+                        <!-- Code -->
+                        <td class="py-3 align-middle text-center">
+                            <span class="badge bg-light text-secondary border px-3 py-2">#<%= ep.getCode() %></span>
                         </td>
 
-                        <td class="py-3 px-4 align-middle fw-bold fs-5" style="color: #111827;">
-                            <%= ep.getLibelle() %>
-                        </td>
-
-                        <td class="py-3 px-4 align-middle text-center">
+                        <!-- Libellé (cliquable directement) -->
+                        <td class="py-3 align-middle fw-bold text-center">
                             <a href="${pageContext.request.contextPath}/ServletEpreuve/consulter?idEpreuve=<%= ep.getCode() %>"
-                               class="text-decoration-none fw-bold"
-                               style="color: var(--la-magenta); font-size: 0.9rem; transition: color 0.3s;"
-                               onmouseover="this.style.color='#e6004c'"
-                               onmouseout="this.style.color='var(--la-magenta)'">
-                                CONSULTER →
+                               class="text-decoration-none fs-5"
+                               style="color: #111827; transition: color 0.3s; display: block;"
+                               onmouseover="this.style.color='var(--la-magenta)'"
+                               onmouseout="this.style.color='#111827'">
+                                <%= ep.getLibelle() %>
                             </a>
                         </td>
                     </tr>
                     <%  }
                     } else { %>
                     <tr>
-                        <td colspan="3" class="text-center py-5" style="color: #6b7280; font-size: 1.1rem; background-color: #f9fafb;">
+                        <td colspan="2" class="text-center py-5" style="color: #6b7280; font-size: 1.1rem; background-color: #f9fafb;">
                             <i>Aucune épreuve répertoriée pour le moment.</i>
                         </td>
                     </tr>

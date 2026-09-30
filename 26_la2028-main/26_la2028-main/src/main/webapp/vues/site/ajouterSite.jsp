@@ -3,14 +3,14 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="sio.la2028.form.FormSite" %>
-<%@ page import="sio.la2028.model.Sport" %>
+<%@page import="sio.la2028.model.Sport"%>
+<%@page import="sio.la2028.form.FormSite"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LA 2028 - Ajouter un Site</title>
+  <title>LA 2028 - Nouveau Site</title>
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
@@ -28,6 +28,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
+<!-- INCLUSION DU HEADER GLOBAL -->
 <jsp:include page="../includes/header.jsp">
   <jsp:param name="active" value="site" />
 </jsp:include>
@@ -39,28 +40,27 @@
   <div class="light-card p-4 p-md-5 w-100" style="max-width: 600px;">
     <div class="card-content">
       <div class="text-center mb-5">
-        <span class="badge mb-2" style="background-color: var(--la-magenta); font-size: 0.8rem; letter-spacing: 1px;">PLANIFICATION</span>
+        <span class="badge mb-2" style="background-color: var(--la-magenta); font-size: 0.8rem; letter-spacing: 1px;">INFRASTRUCTURE</span>
         <h1 class="text-dark mt-2 mb-3" style="font-family: 'Anton', sans-serif; font-size: 2.5rem; letter-spacing: 1px;">NOUVEAU SITE</h1>
         <p class="text-muted small">Ajoutez une nouvelle infrastructure pour l'accueil des Jeux.</p>
       </div>
 
-      <form class="form-light" action="${pageContext.request.contextPath}/ServletSite/ajouter" method="POST">
+      <form class="form-light" action="ajouter" method="POST">
 
         <div class="mb-4">
-          <label for="nom" class="form-label">Nom du site</label>
-          <input type="text" class="form-control" id="nom" name="nom" maxlength="30" placeholder="Ex: Stade de France, Centre Aquatique..." required>
+          <label for="nom" class="form-label">Nom :</label>
+          <input id="nom" class="form-control" type="text" name="nom" size="30" maxlength="30" placeholder="Ex: Stade de France" required>
         </div>
 
         <div class="mb-4">
-          <label for="sport" class="form-label">Sport de rattachement</label>
-          <select class="form-select" id="sport" name="idSport" required>
-            <option value="" disabled selected>Sélectionnez un sport</option>
+          <label for="idSport" class="form-label">Sport :</label>
+          <select name="idSport" id="idSport" class="form-select">
             <%
               ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("pLesSports");
               if (lesSports != null) {
                 for (int i=0; i<lesSports.size(); i++){
                   Sport sp = lesSports.get(i);
-                  out.println("<option value='" + sp.getId()+"'>" + sp.getNom() + "</option>" );
+                  out.println("<option value='" + sp.getId()+"'>" + sp.getNom()+"</option>" );
                 }
               }
             %>
@@ -68,7 +68,7 @@
         </div>
 
         <div class="d-grid mt-5 pt-3 border-top" style="border-color: #e5e7eb !important;">
-          <input type="submit" name="valider" id="valider" class="btn btn-magenta rounded mt-3" value="VALIDER LA CRÉATION"/>
+          <input type="submit" name="valider" id="valider" class="btn btn-magenta rounded mt-3" value="Valider"/>
         </div>
 
         <div class="text-center mt-4">
@@ -79,6 +79,7 @@
   </div>
 </main>
 
+<!-- INCLUSION DU FOOTER GLOBAL -->
 <jsp:include page="../includes/footer.jsp" />
 
 <script src="${pageContext.request.contextPath}/style/script.js"></script>

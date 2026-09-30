@@ -57,7 +57,7 @@
         <table class="table table-light-theme mb-0 w-100">
           <thead>
           <tr>
-            <th class="py-3 text-center" style="width: 120px; font-size: 0.95rem;">ID</th>
+            <th class="py-3 text-center" style="width: 150px; font-size: 0.95rem;">ID</th>
             <th class="py-3 text-center" style="font-size: 0.95rem;">Nom du site</th>
           </tr>
           </thead>
@@ -71,7 +71,7 @@
               <span class="badge bg-light text-secondary border px-3 py-2">#<%= s.getId() %></span>
             </td>
 
-            <!-- Nom (cliquable) -->
+            <!-- Nom (cliquable directement, sans bouton 'Consulter') -->
             <td class="py-3 align-middle fw-bold text-center">
               <a href="${pageContext.request.contextPath}/ServletSite/consulter?idSite=<%= s.getId() %>"
                  class="text-decoration-none fs-5"

@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="../../style/style.css">
         <title>LOS ANGELES 2028</title>
     </head>
     <body>
@@ -42,9 +43,9 @@
                                
             <input type="submit" name="valider" id="valider" value="Valider"/>
             </form>
-        
-        
-        
-        
+
+
+
+        <script src="../../style/script.js"></script>
     </body>
 </html>

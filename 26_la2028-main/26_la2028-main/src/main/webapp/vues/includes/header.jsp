@@ -12,6 +12,7 @@
         <a href="${pageContext.request.contextPath}/ServletEpreuve/lister" style="<%= "epreuve".equals(activePage) ? "color: var(--la-magenta);" : "" %>">Épreuves</a>
         <a href="${pageContext.request.contextPath}/ServletPays/lister" style="<%= "pays".equals(activePage) ? "color: var(--la-magenta);" : "" %>">Pays</a>
         <a href="${pageContext.request.contextPath}/ServletSite/lister" style="<%= "site".equals(activePage) ? "color: var(--la-magenta);" : "" %>">Sites</a>
+        <a href="${pageContext.request.contextPath}/vues/pari/pariSportif.jsp" style="<%= "pari".equals(activePage) ? "color: var(--la-magenta);" : "" %>">Paris 2028</a>
     </nav>
     <div class="logo ms-auto">
         <a href="${pageContext.request.contextPath}/index.html">

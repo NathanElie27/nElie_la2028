@@ -26,6 +26,10 @@
         <servlet-name>ServletSite</servlet-name>
         <servlet-class>sio.la2028.servlet.ServletSite</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPari</servlet-name>
+        <servlet-class>sio.la2028.servlet.ServletPari</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletAthlete</servlet-name>
         <url-pattern>/ServletAthlete/lister</url-pattern>
@@ -81,6 +85,11 @@
     <servlet-mapping>
         <servlet-name>ServletSite</servlet-name>
         <url-pattern>/ServletSite/ajouter</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletPari</servlet-name>
+        <url-pattern>/ServletPari/lister</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

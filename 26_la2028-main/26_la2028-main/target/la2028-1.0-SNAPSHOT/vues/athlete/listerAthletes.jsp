@@ -110,7 +110,8 @@
                         <td class="py-3 align-middle text-center">
                             <span class="badge bg-dark text-white px-3"><%= a.getPays().getNom() %></span>
                         </td>
-                        <td class="py-3 align-middle text-center" style="color: var(--la-magenta); font-weight: 500;">
+                        <!-- Sport mis avec la même couleur que le reste du tableau (plus de rouge) -->
+                        <td class="py-3 align-middle text-center" style="color: #374151; font-weight: 500;">
                             <%= a.getSport().getNom() %>
                         </td>
                     </tr>

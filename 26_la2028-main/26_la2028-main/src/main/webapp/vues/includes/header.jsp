@@ -3,7 +3,7 @@
     // Récupération de la page active pour colorer le menu en magenta
     String activePage = request.getParameter("active");
 %>
-<!-- En-tête global affiné et logo inversé en blanc -->
+<!-- En-tête global avec logo grand format et couleur blanche -->
 <header class="d-flex justify-content-between align-items-center py-2 px-4 px-md-5 border-bottom" style="border-color: var(--card-border) !important; background-color: rgba(15, 15, 17, 0.95);">
     <nav class="nav-links d-none d-md-flex gap-4">
         <a href="${pageContext.request.contextPath}/index.html">Accueil</a>
@@ -15,8 +15,8 @@
     </nav>
     <div class="logo ms-auto">
         <a href="${pageContext.request.contextPath}/index.html">
-            <!-- Le filtre CSS convertit les parties noires du logo en blanc tout en gardant les couleurs -->
-            <img src="${pageContext.request.contextPath}/images/index/logo_La2028.webp" alt="Logo Los Angeles 2028" width="90" height="45" style="object-fit: contain; filter: brightness(0) invert(1);">
+            <!-- Même taille de logo que sur l'accueil (140x65) -->
+            <img src="${pageContext.request.contextPath}/images/index/logo_La2028.webp" alt="Logo Los Angeles 2028" width="140" height="65" style="object-fit: contain; filter: brightness(0) invert(1);">
         </a>
     </div>
 </header>

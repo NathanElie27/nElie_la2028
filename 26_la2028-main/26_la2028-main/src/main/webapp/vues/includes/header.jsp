@@ -1,10 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    // On récupère le paramètre pour savoir quelle page est active (passé par la JSP parente)
+    // Récupération de la page active pour colorer le menu en magenta
     String activePage = request.getParameter("active");
 %>
-<!-- En-tête avec navigation -->
-<header class="d-flex justify-content-between align-items-center p-4 p-md-5 border-bottom" style="border-color: var(--card-border) !important; background-color: rgba(15, 15, 17, 0.95);">
+<!-- En-tête global affiné et logo inversé en blanc -->
+<header class="d-flex justify-content-between align-items-center py-2 px-4 px-md-5 border-bottom" style="border-color: var(--card-border) !important; background-color: rgba(15, 15, 17, 0.95);">
     <nav class="nav-links d-none d-md-flex gap-4">
         <a href="${pageContext.request.contextPath}/index.html">Accueil</a>
         <a href="${pageContext.request.contextPath}/ServletAthlete/lister" style="<%= "athlete".equals(activePage) ? "color: var(--la-magenta);" : "" %>">Athlètes</a>
@@ -14,8 +14,9 @@
         <a href="${pageContext.request.contextPath}/ServletSite/lister" style="<%= "site".equals(activePage) ? "color: var(--la-magenta);" : "" %>">Sites</a>
     </nav>
     <div class="logo ms-auto">
-        <a href="${pageContext.request.contextPath}/index.html" class="text-decoration-none">
-            <h2 class="m-0" style="font-family: 'Anton', sans-serif; color: white; letter-spacing: 1px;">LA 2028</h2>
+        <a href="${pageContext.request.contextPath}/index.html">
+            <!-- Le filtre CSS convertit les parties noires du logo en blanc tout en gardant les couleurs -->
+            <img src="${pageContext.request.contextPath}/images/index/logo_La2028.webp" alt="Logo Los Angeles 2028" width="90" height="45" style="object-fit: contain; filter: brightness(0) invert(1);">
         </a>
     </div>
 </header>

@@ -33,19 +33,20 @@
 <!-- 3. Contenu principal -->
 <div class="content-wrapper">
 
-    <!-- En-tête avec navigation à gauche et logo à droite -->
-    <header class="d-flex justify-content-between align-items-center p-4 p-md-5">
+    <!-- En-tête affiné avec navigation à gauche et gros logo à droite -->
+    <header class="d-flex justify-content-between align-items-center py-2 px-4 px-md-5 border-bottom" style="border-color: rgba(255, 255, 255, 0.12) !important; background-color: rgba(15, 15, 17, 0.95);">
         <nav class="nav-links d-none d-md-flex gap-4">
             <a href="#sections">Gestion</a>
-            <a href="../la2028/ServletAthlete/lister">Athlètes</a>
-            <a href="../la2028/ServletSport/lister">Sports</a>
-            <a href="../la2028/ServletEpreuve/lister">Épreuves</a>
-            <a href="../la2028/ServletPays/lister">Pays</a>
-            <a href="../la2028/ServletSite/lister">Sites</a>
+            <a href="ServletAthlete/lister">Athlètes</a>
+            <a href="ServletSport/lister">Sports</a>
+            <a href="ServletEpreuve/lister">Épreuves</a>
+            <a href="ServletPays/lister">Pays</a>
+            <a href="ServletSite/lister">Sites</a>
         </nav>
         <div class="logo ms-auto">
             <a href="#">
-                <img src="index/logo_La2028.webp" alt="Logo Los Angeles 2028" width="120" height="60" style="object-fit: contain;">
+                <!-- Logo grossi et inversé en blanc pour bien ressortir sur le fond sombre -->
+                <img src="images/index/logo_La2028.webp" alt="Logo Los Angeles 2028" width="160" height="75" style="object-fit: contain; filter: brightness(0) invert(1);">
             </a>
         </div>
     </header>
@@ -84,7 +85,7 @@
             <div class="row g-4">
                 <!-- Bloc Sports -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="../la2028/ServletSport/lister" class="module-card-link">
+                    <a href="ServletSport/lister" class="module-card-link">
                         <div class="module-card fade-in">
                             <div class="card-bg-img" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800&auto=format&fit=crop');"></div>
                             <div class="card-overlay"></div>
@@ -100,7 +101,7 @@
 
                 <!-- Bloc Sites -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="../la2028/ServletSite/lister" class="module-card-link">
+                    <a href="ServletSite/lister" class="module-card-link">
                         <div class="module-card fade-in">
                             <div class="card-bg-img" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=800&auto=format&fit=crop');"></div>
                             <div class="card-overlay"></div>
@@ -116,7 +117,7 @@
 
                 <!-- Bloc Athlètes -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="../la2028/ServletAthlete/lister" class="module-card-link">
+                    <a href="ServletAthlete/lister" class="module-card-link">
                         <div class="module-card fade-in">
                             <div class="card-bg-img" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623266ddc0?q=80&w=800&auto=format&fit=crop');"></div>
                             <div class="card-overlay"></div>
@@ -132,7 +133,7 @@
 
                 <!-- Bloc Épreuves -->
                 <div class="col-12 col-md-6 col-lg-6">
-                    <a href="../la2028/ServletEpreuve/lister" class="module-card-link">
+                    <a href="ServletEpreuve/lister" class="module-card-link">
                         <div class="module-card fade-in">
                             <div class="card-bg-img" style="background-image: url('https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=800&auto=format&fit=crop');"></div>
                             <div class="card-overlay"></div>
@@ -148,7 +149,7 @@
 
                 <!-- Bloc Pays -->
                 <div class="col-12 col-md-6 col-lg-6">
-                    <a href="../la2028/ServletPays/lister" class="module-card-link">
+                    <a href="ServletPays/lister" class="module-card-link">
                         <div class="module-card fade-in">
                             <div class="card-bg-img" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop');"></div>
                             <div class="card-overlay"></div>
@@ -165,54 +166,23 @@
         </div>
     </section>
 
-    <!-- Footer réglementaire -->
-    <footer class="footer-section mt-auto pt-5 pb-4">
-        <div class="container-fluid px-4 px-md-5">
-            <div class="row g-4 pb-4 border-bottom border-secondary">
-                <div class="col-12 col-md-4">
-                    <h4 class="text-white fw-bold">LA 2028 SI</h4>
-                    <p class="text-muted small ">Système d'information de gestion pour l'organisation des Jeux Olympiques et Paralympiques de Los Angeles 2028.</p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="text-white small fw-bold text-uppercase">Navigation</h5>
-                    <ul class="list-unstyled text-muted small">
-                        <li><a href="../la2028/ServletAthlete/lister" class="footer-link">Athlètes</a></li>
-                        <li><a href="../la2028/ServletSport/lister" class="footer-link">Sports</a></li>
-                        <li><a href="../la2028/ServletEpreuve/lister" class="footer-link">Épreuves</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h5 class="text-white small fw-bold text-uppercase">Infrastructures</h5>
-                    <ul class="list-unstyled text-muted small">
-                        <li><a href="../la2028/ServletSite/lister" class="footer-link">Sites de compétition</a></li>
-                        <li><a href="../la2028/ServletPays/lister" class="footer-link">Comités nationaux</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-3">
-                    <h5 class="text-white small fw-bold text-uppercase">Ressources & Crédits</h5>
-                    <p class="text-muted small mb-1">Visuels sous licence Adobe Stock / CIO.</p>
-                    <p class="text-muted small">Données sous licence ouverte d'organisation sportive.</p>
-                </div>
-            </div>
-
-            <div class="row pt-4 text-muted small">
-                <div class="col-12 col-md-6">
-                    © 2028 Comité d'organisation des Jeux Olympiques. Tous droits réservés.
-                </div>
-                <div class="col-12 col-md-6 text-md-end mt-2 mt-md-0">
-                    <a href="#" class="footer-legal-link me-3">Mentions légales</a>
-                    <a href="#" class="footer-legal-link me-3">Politique de confidentialité</a>
-                    <a href="#" class="footer-legal-link me-3">Gestion des cookies</a>
-                    <a href="#" class="footer-legal-link">Accessibilité : conforme</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- EMPLACEMENT DU FOOTER GLOBAL -->
+    <div id="global-footer-container"></div>
 
 </div>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="style/script.js"></script>
+
+<!-- Script pour charger dynamiquement le même footer que les pages JSP -->
+<script>
+    fetch('vues/includes/footer.jsp')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('global-footer-container').innerHTML = html;
+        })
+        .catch(error => console.error('Erreur lors du chargement du footer:', error));
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 12 oct. 2026 à 09:23
+-- Généré le : mer. 14 oct. 2026 à 06:05
 -- Version du serveur : 11.5.2-MariaDB
 -- Version de PHP : 8.3.14
 
@@ -143,8 +143,8 @@ CREATE TABLE IF NOT EXISTS `pays` (
 --
 
 INSERT INTO `pays` (`id`, `code`, `nom`, `photo_pay`) VALUES
-(1, 'FRA', 'France', ''),
-(2, 'USA', 'United States of America', ''),
+(1, 'FRA', 'France', '/images/Pays/FRA.png'),
+(2, 'USA', 'United States of America', '/images/Pays/USA.png'),
 (3, 'ALB', 'Albania', ''),
 (4, 'ALG', 'Algeria', ''),
 (5, 'GER', 'Germany', ''),
@@ -338,7 +338,7 @@ INSERT INTO `pays` (`id`, `code`, `nom`, `photo_pay`) VALUES
 (193, 'SLE', 'Sierra Leone', ''),
 (194, 'SIN', 'Singapore', ''),
 (195, 'SVK', 'Slovakia', ''),
-(196, 'SLO', 'Slovenia', ''),
+(196, 'SLO', 'Slovenia', '/images/Pays/SLO.png'),
 (197, 'SOM', 'Somalia', ''),
 (198, 'SUD', 'Sudan', ''),
 (199, 'SRI', 'Sri Lanka', ''),
@@ -414,8 +414,7 @@ DROP TABLE IF EXISTS `sports`;
 CREATE TABLE IF NOT EXISTS `sports` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
-  `photo_spo` varchar(50) NOT NULL,
-  `photo_sport` varchar(100) DEFAULT NULL,
+  `photo_spo` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -423,16 +422,16 @@ CREATE TABLE IF NOT EXISTS `sports` (
 -- Déchargement des données de la table `sports`
 --
 
-INSERT INTO `sports` (`id`, `nom`, `photo_spo`, `photo_sport`) VALUES
-(1, 'Judo', '', '/images/Sport/judo.svg'),
-(2, 'Gymnastique artistique', '', '/images/Sport/gym.svg'),
-(3, 'Badminton', '', '/images/Sport/bad.svg'),
-(4, 'Cyclisme', '', '/images/Sport/cyc.svg'),
-(5, 'Basketball', '', '/images/Sport/bas.svg'),
-(6, 'Natation', '', '/images/Sport/nat.svg'),
-(8, 'Football', '', '/images/Sport/foot.svg'),
-(9, 'Rugby à 7', '', '/images/Sport/ru7.svg'),
-(10, 'Athlétisme', '', '/images/Sport/ath.svg');
+INSERT INTO `sports` (`id`, `nom`, `photo_spo`) VALUES
+(1, 'Judo', '/images/Sport/judo.svg'),
+(2, 'Gymnastique artistique', '/images/Sport/gym.svg'),
+(3, 'Badminton', '/images/Sport/bad.svg'),
+(4, 'Cyclisme', '/images/Sport/cyc.svg'),
+(5, 'Basketball', '/images/Sport/bas.svg'),
+(6, 'Natation', '/images/Sport/nat.svg'),
+(8, 'Football', '/images/Sport/foot.svg'),
+(9, 'Rugby à 7', '/images/Sport/ru7.svg'),
+(10, 'Athlétisme', '/images/Sport/ath.svg');
 
 --
 -- Contraintes pour les tables déchargées
